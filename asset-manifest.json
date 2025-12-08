@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/kingcharlie-portfolio/static/css/main.1f2d4577.css",
-    "main.js": "/kingcharlie-portfolio/static/js/main.cead484f.js",
+    "main.js": "/kingcharlie-portfolio/static/js/main.f3861e26.js",
     "static/js/453.7913153a.chunk.js": "/kingcharlie-portfolio/static/js/453.7913153a.chunk.js",
     "static/media/ticketing-3.png": "/kingcharlie-portfolio/static/media/ticketing-3.874c20ae19c88a6398c4.png",
     "static/media/inventory-2.png": "/kingcharlie-portfolio/static/media/inventory-2.8d9131d8d110ab8b63a4.png",
@@ -16,11 +16,11 @@
     "static/media/kingcharles.jpg": "/kingcharlie-portfolio/static/media/kingcharles.e8263076298ddb609d19.jpg",
     "index.html": "/kingcharlie-portfolio/index.html",
     "main.1f2d4577.css.map": "/kingcharlie-portfolio/static/css/main.1f2d4577.css.map",
-    "main.cead484f.js.map": "/kingcharlie-portfolio/static/js/main.cead484f.js.map",
+    "main.f3861e26.js.map": "/kingcharlie-portfolio/static/js/main.f3861e26.js.map",
     "453.7913153a.chunk.js.map": "/kingcharlie-portfolio/static/js/453.7913153a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1f2d4577.css",
-    "static/js/main.cead484f.js"
+    "static/js/main.f3861e26.js"
   ]
 }
