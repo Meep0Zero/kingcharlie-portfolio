@@ -195,20 +195,15 @@ const Hero = () => {
               <div className="contact-info">
                 <div className="info-item">
                   <FaEnvelope />
-                  <span>kingcharlie@example.com</span>
+                  <span>dev.kcee37340@gmail.com</span>
                 </div>
                 <div className="info-item">
                   <FaGithub />
-                  <a href="https://github.com/kingcharlie" target="_blank" rel="noopener noreferrer">
-                    github.com/kingcharlie
+                  <a href="https://github.com/Meep0Zero" target="_blank" rel="noopener noreferrer">
+                    https://github.com/Meep0Zero
                   </a>
                 </div>
-                <div className="info-item">
-                  <FaLinkedin />
-                  <a href="https://linkedin.com/in/kingcharlie" target="_blank" rel="noopener noreferrer">
-                    linkedin.com/in/kingcharlie
-                  </a>
-                </div>
+                
               </div>
             </div>
           </div>

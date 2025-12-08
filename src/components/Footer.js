@@ -26,9 +26,8 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: <FaGithub />, href: 'https://github.com/kingcharlie', label: 'GitHub' },
-    { icon: <FaLinkedin />, href: 'https://linkedin.com/in/kingcharlie', label: 'LinkedIn' },
-    { icon: <FaEnvelope />, href: 'mailto:kingcharlie@example.com', label: 'Email' },
+    { icon: <FaGithub />, href: 'https://github.com/Meep0Zero', label: 'GitHub' },
+    { icon: <FaEnvelope />, href: 'mailto:dev.kcee37340@gmail.com', label: 'Email' },
   ];
 
   return (
