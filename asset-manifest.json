@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/kingcharlie-portfolio/static/css/main.1f2d4577.css",
+    "main.js": "/kingcharlie-portfolio/static/js/main.cead484f.js",
+    "static/js/453.7913153a.chunk.js": "/kingcharlie-portfolio/static/js/453.7913153a.chunk.js",
+    "static/media/ticketing-3.png": "/kingcharlie-portfolio/static/media/ticketing-3.874c20ae19c88a6398c4.png",
+    "static/media/inventory-2.png": "/kingcharlie-portfolio/static/media/inventory-2.8d9131d8d110ab8b63a4.png",
+    "static/media/ticketing-2.png": "/kingcharlie-portfolio/static/media/ticketing-2.ac8803ce3c132237a603.png",
+    "static/media/inventory-3.png": "/kingcharlie-portfolio/static/media/inventory-3.757134e9718cabcf0502.png",
+    "static/media/inventory-1.png": "/kingcharlie-portfolio/static/media/inventory-1.08b08384a213c055ec7b.png",
+    "static/media/ticketing-1.png": "/kingcharlie-portfolio/static/media/ticketing-1.cb96c036dccdf35b663b.png",
+    "static/media/hris-1.png": "/kingcharlie-portfolio/static/media/hris-1.4ca71ccbb8fbad950d42.png",
+    "static/media/hris-2.png": "/kingcharlie-portfolio/static/media/hris-2.00a9400331e753be497a.png",
+    "static/media/hris-3.png": "/kingcharlie-portfolio/static/media/hris-3.2f8d4fd0664c0b2552b1.png",
+    "static/media/comingsoon.png": "/kingcharlie-portfolio/static/media/comingsoon.8d7256324991402aad37.png",
+    "static/media/kingcharles.jpg": "/kingcharlie-portfolio/static/media/kingcharles.e8263076298ddb609d19.jpg",
+    "index.html": "/kingcharlie-portfolio/index.html",
+    "main.1f2d4577.css.map": "/kingcharlie-portfolio/static/css/main.1f2d4577.css.map",
+    "main.cead484f.js.map": "/kingcharlie-portfolio/static/js/main.cead484f.js.map",
+    "453.7913153a.chunk.js.map": "/kingcharlie-portfolio/static/js/453.7913153a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1f2d4577.css",
+    "static/js/main.cead484f.js"
+  ]
+}
