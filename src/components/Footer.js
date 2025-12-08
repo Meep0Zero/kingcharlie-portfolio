@@ -60,9 +60,9 @@ const Footer = () => {
           <div className="footer-contact">
             <h4 className="footer-heading">Get In Touch</h4>
             <div className="contact-info">
-              <a href="mailto:kingcharlie@example.com" className="contact-link">
+              <a href="mailto:dev.kcee37340@gmail.com" className="contact-link">
                 <FaEnvelope />
-                kingcharlie@example.com
+                dev.kcee37340@gmail.com
               </a>
               <div className="social-links">
                 {socialLinks.map((social, index) => (
