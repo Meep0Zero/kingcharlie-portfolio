@@ -12,7 +12,7 @@ import profilePhoto from '../assets/kingcharles.jpg';
 
 const Hero = () => {
   const handleResumeDownload = () => {
-    alert("Resume will be available soon!");
+    alert("Hire me to download resume!");
   };
 
   return (
