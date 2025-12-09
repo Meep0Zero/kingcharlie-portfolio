@@ -249,7 +249,7 @@ const Hero = () => {
                 Interested in collaborating or have a project in mind?
               </p>
               <div className="contact-form">
-                <a href="mailto:kingcharlie@example.com" className="btn btn-primary btn-block">
+                <a href="mailto:dev.kcee37340@gmail.com" className="btn btn-primary btn-block">
                   <FaEnvelope /> Send Email
                 </a>
                 <p className="form-note">
