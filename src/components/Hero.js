@@ -237,6 +237,7 @@ const Hero = () => {
                 <div className="tech-item">
                   <FaMobileAlt className="tech-icon flutter" />
                   <span>Flutter</span>
+                  <small>Coming soon</small>
                 </div>
               </div>
             </div>
