@@ -29,7 +29,7 @@ const Experience = () => {
     },
     {
       id: 2,
-      company: "Citihardware Inc.",
+      company: "DecoArts Marketing Inc.",
       position: "Infrastructure and Operations Specialist",
       period: "April 16, 2024 - September 24, 2025",
       location: "Quimpo blvd Ecoland, Davao City",

@@ -81,10 +81,10 @@ const Hero = () => {
                   <FaDatabase />
                   <span>Database Design</span>
                 </li>
-                <li className="category-item">
+                {/* <li className="category-item">
                   <FaServer />
                   <span>System Architecture</span>
-                </li>
+                </li> */}
                 <li className="category-item">
                   <FaTools />
                   <span>DevOps & Infrastructure</span>
@@ -249,7 +249,7 @@ const Hero = () => {
                 Interested in collaborating or have a project in mind?
               </p>
               <div className="contact-form">
-                <a href="mailto:kingcharlie@example.com" className="btn btn-primary btn-block">
+                <a href="mailto:dev.kcee37340@gmail.com" className="btn btn-primary btn-block">
                   <FaEnvelope /> Send Email
                 </a>
                 <p className="form-note">
