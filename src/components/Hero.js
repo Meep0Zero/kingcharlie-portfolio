@@ -12,7 +12,7 @@ import profilePhoto from '../assets/kingcharles.jpg';
 
 const Hero = () => {
   const handleResumeDownload = () => {
-    alert("Hire me to download resume!");
+    alert("Download resume coming soon!");
   };
 
   return (
@@ -31,7 +31,7 @@ const Hero = () => {
             </div>
             <div className="header-info">
               <h1 className="name">King Charlie R. Dacillo</h1>
-              <h2 className="title">Full Stack Laravel Developer</h2>
+              <h2 className="title">Full Stack Developer</h2>
               <div className="header-actions">
                 <button className="btn btn-primary" onClick={handleResumeDownload}>
                   <FaDownload /> Download Resume
