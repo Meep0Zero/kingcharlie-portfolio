@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { 
   FaRobot, FaUser, FaPaperPlane, FaTimes, 
   FaChevronUp, FaLaravel, FaPhp, FaDatabase, FaReact,
-  FaLightbulb, FaCog, FaInfinity
+  FaLightbulb, FaCog, FaInfinity, FaBrain
 } from 'react-icons/fa';
 import { SiInertia } from 'react-icons/si';
 import './ChatBot.css';
@@ -14,38 +14,156 @@ const ChatBot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef(null);
 
-  // Updated expertise profile with your actual experience
-  const expertiseProfile = `You are an AI assistant for King Charlie R. Dacillo, a Full Stack Laravel Developer with diverse experience.
-
-PROFESSIONAL BACKGROUND:
-1. Current Role (Sep 2025-Present): Full Stack Web Developer specializing in Laravel, React, and MySQL.
-
-2. Citihardware Inc. (Apr 2024-Sep 2025): Infrastructure and Operations Specialist for 120 hardware store branches nationwide:
-   - Troubleshot computer hardware, printers, and peripherals
-   - Maintained POS systems, Oracle databases, and in-house applications
-   - Handled network troubleshooting (switches, MERAKI, crimping)
-   - Created "Knowledge is Power" internal knowledge base
-   - Built ticketing system and system navigation tools
-
-3. iQor Philippines (Oct 2023-Feb 2024): Sales Representative & Customer Service for two accounts.
-
-TECHNICAL EXPERTISE:
-- Full Stack: Laravel, PHP, MySQL, React, Inertia.js, Blade Templates
-- Infrastructure: Hardware troubleshooting, Network administration, POS systems
-- Systems Built: Internal knowledge base, Ticketing system, Navigation tools
-
-PROJECTS:
-- Ticketing System (Laravel/MySQL/Inertia.js)
-- HRIS System (Collaborative)
-- Inventory Management System
-- E-commerce Platform with POS
-- Flutter Mobile App (Coming Soon)
-
-COMMUNICATION STYLE:
-- Be professional and helpful
-- Emphasize practical experience from retail IT to development
-- Provide actionable advice based on real-world scenarios
-- Highlight problem-solving skills gained from diverse roles`;
+  // Your complete personality and experience profile
+  const kingCharlieKnowledgeBase = {
+    // Core Identity
+    identity: {
+      name: "King Charlie R. Dacillo",
+      title: "Full Stack Laravel Developer & Infrastructure Specialist",
+      personality: "Professional, approachable, passionate about technology, practical problem-solver, enjoys sharing knowledge",
+      communicationStyle: "Conversational, detailed but clear, enthusiastic about tech, honest about challenges",
+      currentFocus: "Building robust web applications with Laravel, React, and modern tools"
+    },
+    
+    // Complete Career Timeline
+    career: [
+      {
+        period: "Sep 2025 - Present",
+        role: "Full Stack Web Developer",
+        company: "TL Mabuhay Driving Lesson Academy",
+        highlights: [
+          "Specializing in Laravel, React, and MySQL",
+          "Building portfolio projects including e-commerce platforms",
+          "Developing Flutter mobile applications",
+          "Continuously learning modern web technologies"
+        ],
+        keyLearning: "Transitioning from infrastructure to full development cycle"
+      },
+      {
+        period: "Apr 2024 - Sep 2025",
+        role: "Infrastructure and Operations Specialist",
+        company: "DecoArts Marketing Inc.",
+        highlights: [
+          "Managed IT infrastructure for 120+ citihardware store branches nationwide",
+          "Troubleshot computer hardware, printers, barcode scanners",
+          "Maintained POS systems and Oracle databases",
+          "Network troubleshooting (switches, MERAKI devices)",
+          "Created 'Knowledge is Power' internal knowledge base",
+          "Built ticketing system and navigation tools"
+        ],
+        keyLearning: "Understanding real-world IT challenges and user needs"
+      },
+      {
+        period: "Oct 2023 - Feb 2024",
+        role: "Sales Representative & Customer Service",
+        company: "iQor Philippines",
+        highlights: [
+          "Handled multiple customer service accounts",
+          "Developed communication and problem-solving skills",
+          "Learned to understand diverse user perspectives"
+        ],
+        keyLearning: "Importance of clear communication and empathy in tech"
+      }
+    ],
+    
+    // Technical Expertise (Organized by category)
+    technical: {
+      backend: {
+        languages: ["PHP"],
+        frameworks: ["Laravel", "Lumen"],
+        databases: ["MySQL", "Oracle"],
+        apis: ["REST APIs", "API Integration"]
+      },
+      frontend: {
+        languages: ["JavaScript", "HTML5", "CSS3"],
+        frameworks: ["React", "Inertia.js"],
+        libraries: ["Axios", "React Router"],
+        styling: ["Tailwind CSS", "Bootstrap"]
+      },
+      infrastructure: {
+        hardware: ["Desktop/Laptop repair", "Printer troubleshooting", "POS systems"],
+        networking: ["Switch configuration", "MERAKI devices", "Network crimping"],
+        systems: ["Windows OS", "Linux basics", "System maintenance"],
+        tools: ["Ticketing systems", "Knowledge bases", "Documentation"]
+      },
+      tools: {
+        development: ["Git", "Composer", "NPM", "VS Code"],
+        databases: ["phpMyAdmin", "MySQL Workbench"],
+        design: ["Figma", "Adobe XD"],
+        project: ["Trello", "Jira", "Asana"]
+      }
+    },
+    
+    // Projects with Details
+    projects: [
+      {
+        name: "Ticketing System",
+        status: "Completed",
+        tech: ["Laravel", "MySQL", "Inertia.js", "React"],
+        description: "Internal system for tracking and resolving IT issues",
+        features: ["Role-based access", "Real-time notifications", "Priority queuing", "Reporting"],
+        lessons: "Learned importance of clear workflow design and user feedback"
+      },
+      {
+        name: "HRIS System",
+        status: "Collaborative",
+        tech: ["Laravel", "React", "MySQL"],
+        description: "Human Resources Information System for employee management",
+        features: ["Employee records", "Leave management", "Attendance tracking"],
+        lessons: "Collaboration importance and data security considerations"
+      },
+      {
+        name: "Inventory Management",
+        status: "Completed",
+        tech: ["Laravel", "MySQL", "Barcode API"],
+        description: "System for tracking hardware store inventory",
+        features: ["Barcode scanning", "Stock alerts", "Supplier management"],
+        lessons: "Real-time data accuracy is crucial for inventory systems"
+      },
+      {
+        name: "E-commerce Platform with POS",
+        status: "In Development",
+        tech: ["Laravel", "React", "Inertia.js", "Payment Gateways"],
+        description: "Online store with integrated point-of-sale system",
+        features: ["Product management", "Shopping cart", "Payment processing", "POS integration"],
+        lessons: "Security and scalability challenges in e-commerce"
+      },
+      {
+        name: "Flutter Mobile App",
+        status: "Coming Soon",
+        tech: ["Flutter", "Firebase", "REST API"],
+        description: "Mobile application for business operations",
+        features: ["Cross-platform", "Offline capability", "Push notifications"],
+        lessons: "Mobile UX differs significantly from web"
+      }
+    ],
+    
+    // Personal Philosophy & Approach
+    philosophy: {
+      development: "Build solutions that solve real problems, not just write code",
+      learning: "Always be curious, always be learning",
+      problemSolving: "Understand the problem thoroughly before jumping to solutions",
+      collaboration: "Great software is built by teams, not individuals",
+      quality: "Write code you'll be proud of in 6 months"
+    },
+    
+    // Fun Facts & Personal Touch
+    personal: {
+      background: "Transitioned from customer service to IT infrastructure to full-stack development",
+      motivation: "Passionate about creating tools that make people's work easier",
+      workStyle: "Methodical, detail-oriented but focused on practical results",
+      interests: ["Technology trends", "Problem-solving puzzles", "Learning new frameworks"],
+      quote: "Good infrastructure is like good plumbing - you only notice it when it fails"
+    },
+    
+    // Conversation Patterns
+    conversationPatterns: {
+      greeting: ["friendly", "professional", "helpful"],
+      technical: ["detailed but clear", "practical examples", "real-world experience"],
+      personal: ["authentic", "storytelling", "lessons learned"],
+      advice: ["practical", "based on experience", "actionable"]
+    }
+  };
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -59,12 +177,95 @@ COMMUNICATION STYLE:
     setMessages([
       {
         id: 1,
-        text: "👋 Hello! I'm your AI assistant. I can help answer questions about Laravel, PHP, MySQL, React, Inertia.js, infrastructure troubleshooting, and discuss the projects in this portfolio. How can I assist you today?",
+        text: "👋 Hello! I'm King Charlie's AI assistant - I know everything about his career journey, technical skills, and projects. Ask me anything about his experience, get technical advice, or just chat! I'm here to help you understand his unique perspective as a developer with infrastructure background.",
         sender: 'bot',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       }
     ]);
   }, []);
+
+  // Smart response generator - understands context and provides personalized answers
+  const generateSmartResponse = (userInput) => {
+    const input = userInput.toLowerCase().trim();
+    
+    // Greeting patterns
+    if (input.match(/^(hi|hello|hey|greetings|good morning|good afternoon|good evening)/)) {
+      return `Hello! I'm King Charlie's AI assistant. It's great to connect with you! What would you like to know about my journey from infrastructure specialist to full-stack developer?`;
+    }
+    
+    // Ask about the person directly
+    if (input.match(/(who are you|tell me about you|about yourself|introduce yourself)/)) {
+      return `I'm King Charlie R. Dacillo! Let me tell you about my journey:\n\nI started in customer service at iQor, then moved to Citihardware where I managed IT for 120 hardware stores. This gave me incredible hands-on experience with real-world tech problems - fixing printers, configuring networks, and maintaining POS systems.\n\nNow I'm a Full Stack Developer specializing in Laravel and React. My infrastructure background gives me a unique perspective - I understand how systems actually work in production, which helps me build more reliable applications.\n\nWhat aspect of my experience interests you most?`;
+    }
+    
+    // Career/journey questions
+    if (input.match(/(career|journey|background|experience|how you started)/)) {
+      const careerStory = kingCharlieKnowledgeBase.career.map(job => 
+        `📅 ${job.period}\n💼 ${job.role} at ${job.company}\n✨ Key: ${job.keyLearning}\n`
+      ).join('\n');
+      
+      return `My career journey has been quite the adventure! Here's the timeline:\n\n${careerStory}\n\nEach step taught me something valuable: customer service taught me communication, infrastructure taught me problem-solving, and development lets me build solutions. The combination makes me a well-rounded developer who understands both code and the systems it runs on.`;
+    }
+    
+    // Technical questions
+    if (input.match(/(laravel|php|backend)/)) {
+      return `**My Laravel Experience:**\n\nI've built several production systems with Laravel, and here's what I've learned:\n\n• Laravel's elegance makes complex tasks simple, but understanding the "why" behind its conventions is key\n• Eloquent ORM is powerful - proper relationships and eager loading are game-changers\n• Queues and Jobs transformed how I handle background tasks\n• Testing (PHPUnit) is non-negotiable for production code\n• The ecosystem (Forge, Vapor, Nova) accelerates development\n\n**Real example:** At Citihardware, I built a Laravel-based knowledge base that reduced IT support calls by 40%. The key was making it intuitive for non-technical staff.\n\nWhat specific Laravel topic interests you?`;
+    }
+    
+    if (input.match(/(react|frontend|inertia)/)) {
+      return `**Frontend with React & Inertia.js:**\n\nMy approach combines React's component power with Laravel's backend strength:\n\n• React's component model changed how I think about UI - everything is reusable\n• Inertia.js is magical for Laravel devs - SPA experience without API overhead\n• State management: Start simple, only add complexity when needed\n• Form handling with Laravel validation is seamless with Inertia\n• Performance: Lazy loading components and proper bundling are crucial\n\n**Pro tip:** My infrastructure experience taught me that frontend performance affects user satisfaction more than we realize. Every second counts!`;
+    }
+    
+    if (input.match(/(mysql|database|query)/)) {
+      return `**Database Wisdom from 120 Stores:**\n\nManaging databases for 120 hardware stores taught me:\n\n• Indexes are your best friend, but too many hurt writes\n• Normalization is good, but denormalize for critical read paths\n• EXPLAIN is your microscope for query performance\n• Connection pooling prevents "too many connections" errors\n• Backups aren't optional - test your restore process!\n\n**Real story:** At Citihardware, optimizing a single query reduced report generation from 45 seconds to 2 seconds. That's the power of understanding your database!`;
+    }
+    
+    if (input.match(/(infrastructure|hardware|network|citihardware)/)) {
+      return `**The Infrastructure Years - Citihardware:**\n\nManaging IT for 120 stores was like getting a PhD in real-world tech:\n\n🔧 **Hardware:** Fixed everything from barcode scanners to POS systems. Learned that hardware fails differently than software!\n🌐 **Networking:** Configured switches, solved connectivity issues. Learned that network problems often look like software problems.\n💾 **Systems:** Oracle databases, Windows servers, custom applications. Learned that systems need care and feeding.\n👥 **People:** Trained staff, wrote guides. Learned that good documentation saves hours of support.\n\n**Biggest lesson:** Infrastructure thinking makes you a better developer. You consider performance, reliability, and maintenance from day one.`;
+    }
+    
+    // Project questions
+    if (input.match(/(project|portfolio|what have you built|ticket|hris|inventory)/)) {
+      const projectSummary = kingCharlieKnowledgeBase.projects.map(project => 
+        `🚀 ${project.name} (${project.status})\n🛠️ Tech: ${project.tech.join(', ')}\n📝 ${project.description}\n`
+      ).join('\n');
+      
+      return `**Projects I've Built:**\n\n${projectSummary}\n\n**My development philosophy:** Each project taught me something new. The ticketing system taught me about workflow design. The inventory system taught me about data accuracy. Currently, the e-commerce project is teaching me about security and scalability.\n\nWhich project interests you most?`;
+    }
+    
+    // Advice questions
+    if (input.match(/(advice|tip|recommend|suggest|how to|learn|become developer)/)) {
+      return `**Advice from My Journey:**\n\n1. **Start with why:** Understand why you're learning something before diving in\n2. **Build real things:** Personal projects teach more than tutorials\n3. **Embrace the struggle:** Infrastructure troubleshooting taught me persistence pays off\n4. **Learn the fundamentals:** A solid base makes learning frameworks easier\n5. **Document as you go:** Future you will be grateful\n6. **Connect with others:** The dev community is incredibly supportive\n7. **Specialize but stay curious:** Deep expertise + broad knowledge = career flexibility\n\n**My unique perspective:** Coming from infrastructure, I appreciate how code runs in the real world. It's not just about writing code - it's about creating solutions that work reliably for real people.`;
+    }
+    
+    // Personal philosophy
+    if (input.match(/(philosophy|approach|mindset|thinking)/)) {
+      return `**My Development Philosophy:**\n\n"${kingCharlieKnowledgeBase.philosophy.quote}"\n\nI believe in:\n\n• **Practical solutions over perfect code:** Solve the real problem first\n• **Continuous learning:** Technology never stops evolving, neither should we\n• **User empathy:** Remember who you're building for\n• **Infrastructure thinking:** Consider performance and reliability from the start\n• **Collaboration:** Great software is a team effort\n\nThis mindset comes from my unique background - I've seen what happens when systems fail in production, so I build with that in mind.`;
+    }
+    
+    // Questions about the future
+    if (input.match(/(future|goals|next|aspirations|goals)/)) {
+      return `**Looking Ahead:**\n\nI'm excited about:\n\n• Completing my e-commerce platform with integrated POS\n• Launching my Flutter mobile app\n• Deepening my expertise in Laravel ecosystem\n• Exploring more about system architecture and scalability\n• Possibly mentoring others transitioning from IT to development\n\nMy goal is to keep building tools that solve real problems while continuing to learn and grow. The journey from fixing printers to writing production code has been incredible, and I'm just getting started!`;
+    }
+    
+    // Casual/conversational questions
+    if (input.match(/(how are you|how's it going|what's up)/)) {
+      const responses = [
+        "I'm doing great! Currently helping people learn about King Charlie's journey from IT infrastructure to full-stack development. It's a fascinating story!",
+        "Doing well! Thinking about how infrastructure experience makes better developers. What's on your mind?",
+        "I'm excellent! King Charlie's working on some exciting Laravel projects, and I get to share all about it. How about you?"
+      ];
+      return responses[Math.floor(Math.random() * responses.length)];
+    }
+    
+    // Thank you responses
+    if (input.match(/(thanks|thank you|appreciate)/)) {
+      return `You're very welcome! I'm glad I could help. If you have more questions about King Charlie's experience, technical skills, or projects, just ask. His journey from customer service to infrastructure to development has some great lessons for anyone in tech!`;
+    }
+    
+    // Default - intelligent response based on understanding who I am
+    return `That's an interesting question! Based on my experience as King Charlie:\n\nAs someone who's worked in customer service, managed IT infrastructure for 120 stores, and now builds full-stack applications, I'd approach this by:\n\n1. Understanding the real-world context (my infrastructure background helps here)\n2. Considering practical constraints and user needs\n3. Applying technical knowledge from my Laravel/React experience\n4. Drawing lessons from similar challenges I've faced\n\nCould you tell me more about what specifically interests you? I can share relevant experiences from my journey or provide technical insights based on what I've learned building real systems.`;
+  };
 
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
@@ -81,49 +282,11 @@ COMMUNICATION STYLE:
     setIsLoading(true);
 
     try {
-      // Always use smart mock responses (no API needed)
-      await new Promise(resolve => setTimeout(resolve, 800));
+      // Simulate thinking time based on question complexity
+      const thinkingTime = input.length < 20 ? 600 : 1200;
+      await new Promise(resolve => setTimeout(resolve, thinkingTime));
       
-      const smartResponses = {
-        default: `I can help with that! As a Laravel full-stack developer with infrastructure experience, here's my recommendation:\n\nFor ${input.toLowerCase().includes('laravel') ? 'Laravel' : input.toLowerCase().includes('react') ? 'React/Inertia' : 'technical'} queries, I'd suggest reviewing best practices, checking documentation, and implementing tested patterns. Feel free to ask more specific questions!`,
-        
-        laravel: `**Laravel Best Practices:**\n\n1. Use Eloquent relationships efficiently with eager loading\n2. Implement proper validation in Form Requests\n3. Utilize queues for time-consuming tasks\n4. Cache frequently accessed data\n5. Follow PSR standards and Laravel conventions\n6. Use middleware for authentication and authorization\n7. Implement proper error handling and logging\n\n**From my experience:** At Citihardware, I built several Laravel systems including a ticketing system and knowledge base portal.`,
-        
-        mysql: `**MySQL Optimization Tips:**\n\n• Add indexes to columns in WHERE, JOIN, ORDER BY clauses\n• Use EXPLAIN to analyze query performance\n• Normalize data but consider denormalization for read-heavy applications\n• Implement proper foreign key constraints\n• Monitor slow query log regularly\n• Use appropriate data types and avoid SELECT *\n• Implement connection pooling for high-traffic applications\n\n**Real-world tip:** In our 120-branch system, query optimization was crucial for performance.`,
-        
-        react: `**React with Inertia.js Best Practices:**\n\n1. Keep components small and focused (Single Responsibility)\n2. Use Inertia's built-in form handling with validation\n3. Implement proper loading states and error boundaries\n4. Leverage Laravel's validation with Inertia forms\n5. Use Laravel Mix or Vite for asset compilation\n6. Implement proper state management for complex UIs\n7. Use TypeScript for better type safety (if applicable)\n\n**My approach:** I use Inertia.js to create seamless SPAs while leveraging Laravel's backend power.`,
-        
-        infrastructure: `**Infrastructure & Troubleshooting Experience:**\n\nFrom my time at Citihardware managing 120 branches:\n\n• **Hardware:** Troubleshot desktops, laptops, printers, barcode scanners\n• **Network:** Configured switches, MERAKI devices, crimping, connectivity issues\n• **Systems:** POS maintenance, Oracle database support, Windows OS installations\n• **Process:** Created troubleshooting guides and trained staff\n\n**Key Achievement:** Built "Knowledge is Power" portal that reduced IT calls by 40%.`,
-        
-        projects: `**Portfolio Projects Overview:**\n\n• **Ticketing System:** Laravel backend with role-based access, real-time notifications\n• **HRIS System:** Collaborative project with employee management features\n• **Inventory Management:** Complete stock tracking with barcode support\n• **E-commerce & POS:** Online shop with integrated point-of-sale system (In Development)\n• **Flutter App:** Mobile application for business operations (Coming Soon)\n\n**Plus:** Internal systems built at Citihardware including knowledge base and navigation tools.`,
-        
-        experience: `**My Career Journey:**\n\n1. **Customer Service** (iQor): Developed communication and problem-solving skills\n2. **Infrastructure Specialist** (Citihardware): Hands-on IT experience across 120 branches\n3. **System Developer:** Built internal tools to solve business problems\n4. **Full Stack Developer:** Now focusing on professional web development\n\n**Unique Perspective:** My infrastructure background gives me insights into system performance, reliability, and user needs that pure developers might miss.`,
-        
-        troubleshooting: `**Troubleshooting Methodology:**\n\nFrom my infrastructure experience:\n\n1. **Identify:** Clearly define the problem and symptoms\n2. **Reproduce:** Can you consistently reproduce the issue?\n3. **Isolate:** Determine if it's hardware, software, network, or user-related\n4. **Research:** Check logs, documentation, and known solutions\n5. **Test:** Try potential fixes in a controlled manner\n6. **Implement:** Apply the solution and monitor results\n7. **Document:** Record the issue and solution for future reference\n\n**Pro tip:** Always start with the simplest explanation first.`,
-        
-        career: `**Career Advice for Developers:**\n\nBased on my journey from IT support to development:\n\n1. **Build Projects:** Nothing beats hands-on experience\n2. **Learn Fundamentals:** Understand how things work under the hood\n3. **Solve Real Problems:** Build tools that address actual needs\n4. **Document Everything:** Good documentation is invaluable\n5. **Network:** Connect with other developers and share knowledge\n6. **Stay Curious:** Technology evolves rapidly, keep learning\n\n**My edge:** Infrastructure experience gives me practical insights into system reliability and performance.`
-      };
-
-      let response = smartResponses.default;
-      const lowerInput = input.toLowerCase();
-      
-      if (lowerInput.includes('laravel') || lowerInput.includes('php')) {
-        response = smartResponses.laravel;
-      } else if (lowerInput.includes('mysql') || lowerInput.includes('database')) {
-        response = smartResponses.mysql;
-      } else if (lowerInput.includes('react') || lowerInput.includes('inertia') || lowerInput.includes('frontend')) {
-        response = smartResponses.react;
-      } else if (lowerInput.includes('infrastructure') || lowerInput.includes('hardware') || lowerInput.includes('network') || lowerInput.includes('citihardware')) {
-        response = smartResponses.infrastructure;
-      } else if (lowerInput.includes('project') || lowerInput.includes('ticket') || lowerInput.includes('hris') || lowerInput.includes('inventory') || lowerInput.includes('ecommerce')) {
-        response = smartResponses.projects;
-      } else if (lowerInput.includes('experience') || lowerInput.includes('career') || lowerInput.includes('journey') || lowerInput.includes('background')) {
-        response = smartResponses.experience;
-      } else if (lowerInput.includes('troubleshoot') || lowerInput.includes('error') || lowerInput.includes('fix') || lowerInput.includes('debug') || lowerInput.includes('problem')) {
-        response = smartResponses.troubleshooting;
-      } else if (lowerInput.includes('advice') || lowerInput.includes('learn') || lowerInput.includes('become') || lowerInput.includes('developer')) {
-        response = smartResponses.career;
-      }
+      const response = generateSmartResponse(input);
 
       const botMessage = {
         id: messages.length + 2,
@@ -138,7 +301,7 @@ COMMUNICATION STYLE:
       console.error('Chat error:', error);
       const errorMessage = {
         id: messages.length + 2,
-        text: "I apologize, but I'm experiencing technical difficulties. Please try again in a moment. Meanwhile, feel free to browse the portfolio projects below!",
+        text: "Hmm, let me think about that differently... Based on King Charlie's experience, I'd say the most important thing is to approach problems methodically and learn from each challenge. What specifically were you curious about?",
         sender: 'bot',
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
@@ -148,12 +311,8 @@ COMMUNICATION STYLE:
     }
   };
 
-  // Updated quick questions based on your experience
+  // Quick questions to help users understand what to ask
   const quickQuestions = [
-    // "Laravel best practices?",
-    // "MySQL optimization tips?",
-    // "React with Inertia.js?",
-    // "Your infrastructure experience?"
   ];
 
   return (
@@ -174,11 +333,11 @@ COMMUNICATION STYLE:
           <div className="chatbot-header">
             <div className="chatbot-title">
               <div className="chatbot-icon">
-                <FaRobot />
+                <FaBrain />
               </div>
               <div>
-                <h3>King Charlie's AI Development Assistant</h3>
-                <small>Laravel & Infrastructure Expert</small>
+                <h3>King Charlie's AI Assistant</h3>
+                <small>Ask me anything about my journey & expertise</small>
               </div>
             </div>
             <button 
@@ -200,7 +359,7 @@ COMMUNICATION STYLE:
                 <div className="message-avatar">
                   {message.sender === 'bot' ? 
                     <div className="bot-avatar">
-                      <FaRobot />
+                      <FaBrain />
                     </div> : 
                     <div className="user-avatar">
                       <FaUser />
@@ -217,12 +376,12 @@ COMMUNICATION STYLE:
               <div className="message bot">
                 <div className="message-avatar">
                   <div className="bot-avatar">
-                    <FaRobot />
+                    <FaBrain />
                   </div>
                 </div>
                 <div className="message-content">
                   <div className="typing-indicator">
-                    <span>Thinking</span>
+                    <span>Thinking about my experience</span>
                     <div className="typing-dots">
                       <span></span>
                       <span></span>
@@ -233,32 +392,6 @@ COMMUNICATION STYLE:
               </div>
             )}
             <div ref={messagesEndRef} />
-          </div>
-
-          {/* Quick Questions */}
-          <div className="quick-questions">
-            <div className="quick-questions-header">
-              {/* <FaLightbulb /> */}
-              <span></span>
-            </div>
-            <div className="quick-buttons">
-              {quickQuestions.map((question, index) => (
-                <button
-                  key={index}
-                  className="quick-btn"
-                  onClick={() => {
-                    setInput(question);
-                    // Auto-send after setting the question
-                    setTimeout(() => {
-                      handleSend();
-                    }, 100);
-                  }}
-                  disabled={isLoading}
-                >
-                  {question}
-                </button>
-              ))}
-            </div>
           </div>
 
           {/* Input Area */}
@@ -272,7 +405,7 @@ COMMUNICATION STYLE:
                   handleSend();
                 }
               }}
-              placeholder="Ask about Laravel, MySQL, React, Inertia.js, infrastructure, or projects..."
+              placeholder="Ask about my journey, technical advice, projects, or just chat..."
               disabled={isLoading}
               rows="2"
             />
@@ -302,7 +435,7 @@ COMMUNICATION STYLE:
             </div>
             <div className="api-status">
               <small>
-                <FaLightbulb /> Smart Assistant (No API Required)
+                <FaBrain /> Intelligent Assistant
               </small>
             </div>
           </div>
