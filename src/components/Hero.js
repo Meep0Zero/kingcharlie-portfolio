@@ -51,9 +51,9 @@ const Hero = () => {
                 <button className="btn btn-primary" onClick={handleResumeDownload}>
                   <FaDownload /> Download Resume
                 </button>
-                <a href="#projects" className="btn btn-secondary">
-                  View Projects
-                </a>
+                // <a href="#projects" className="btn btn-secondary">
+                //   View Projects
+                // </a>
                 <a href="#experience" className="btn btn-secondary">
                   My Experience
                 </a>
@@ -65,7 +65,7 @@ const Hero = () => {
           <nav className="site-navigation">
             <ul className="nav-list">
               <li><a href="#home" className="nav-link active">Home</a></li>
-              <li><a href="#projects" className="nav-link">Projects</a></li>
+              // <li><a href="#projects" className="nav-link">Projects</a></li>
               <li><a href="#experience" className="nav-link">Experience</a></li>
               <li><a href="#skills" className="nav-link">Skills</a></li>
               <li><a href="#contact" className="nav-link">Contact</a></li>
