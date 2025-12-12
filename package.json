@@ -2,7 +2,7 @@
   "name": "kingcharlie-portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://meep0zero.github.io/kingcharlie-portfolio/",
+  "homepage": "https://meep0zero.github.io/kingcharlie-portfolio",
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
     "@testing-library/jest-dom": "^5.17.0",
