@@ -25,13 +25,28 @@ const Hero = () => {
             <div className="profile-image-container">
               <img 
                 src={profilePhoto} 
-                alt="King Charlie R. Dacillo - Full Stack Developer" 
+                alt="King Charlie R. Dacillo - Software Developer" 
                 className="profile-image"
               />
             </div>
             <div className="header-info">
-              <h1 className="name">King Charlie R. Dacillo</h1>
-              <h2 className="title">Full Stack Developer</h2>
+            <h1 className="name flex items-center gap-2">
+              King Charlie R. Dacillo
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="40"
+                height="35"
+                viewBox="0 0 24 24"
+                fill="#1DA1F2"
+              >
+                <path d="M22.25 12l-2.1 2.7.3 3.4-3.3.9-1.9 2.8-3.2-1.2-3.2 1.2-1.9-2.8-3.3-.9.3-3.4L1.75 12l2.1-2.7-.3-3.4 3.3-.9L8.8 2.2l3.2 1.2 3.2-1.2 1.9 2.8 3.3.9-.3 3.4L22.25 12z"/>
+                <path
+                  fill="#fff"
+                  d="M10.6 13.8l-2.2-2.2-1.4 1.4 3.6 3.6 7-7-1.4-1.4z"
+                />
+              </svg>
+            </h1>
+              <h2 className="title">Software Developer</h2>
               <div className="header-actions">
                 <button className="btn btn-primary" onClick={handleResumeDownload}>
                   <FaDownload /> Download Resume
@@ -39,7 +54,7 @@ const Hero = () => {
                 <a href="#projects" className="btn btn-secondary">
                   View Projects
                 </a>
-                <a href="#experience" className="btn btn-outline">
+                <a href="#experience" className="btn btn-secondary">
                   My Experience
                 </a>
               </div>
@@ -102,10 +117,10 @@ const Hero = () => {
                   <strong>MySQL</strong>
                   <span>Database Design & Optimization</span>
                 </div>
-                <div className="compare-item">
+                {/* <div className="compare-item">
                   <strong>XAMPP</strong>
                   <span>Local Development Environment</span>
-                </div>
+                </div> */}
                 <div className="compare-item">
                   <strong>API Integration</strong>
                   <span>RESTful APIs & Services</span>
@@ -114,7 +129,7 @@ const Hero = () => {
             </div>
 
             {/* Sub Category List */}
-            <div className="subcategory-section">
+            {/* <div className="subcategory-section">
               <h3 className="section-title">Technical Stack</h3>
               <div className="subcategory-list">
                 <span className="subcategory-tag">Laravel</span>
@@ -126,7 +141,7 @@ const Hero = () => {
                 <span className="subcategory-tag">HTML/CSS</span>
                 <span className="subcategory-tag">Bootstrap</span>
               </div>
-            </div>
+            </div> */}
           </aside>
 
           {/* Middle Column - Main Content */}
@@ -135,11 +150,11 @@ const Hero = () => {
             <div className="main-description">
               <h3>About Me</h3>
               <p className="description">
-                Specializing in building robust backend systems with Laravel, 
-                creating intuitive frontends with React/Inertia, and managing 
-                efficient MySQL databases. With experience in infrastructure 
-                operations and system development, I bring a comprehensive 
-                approach to full-stack development.
+                A full-stack developer with a strong foundation in infrastructure operations 
+                and system development. I build reliable backend architectures using Laravel, 
+                craft intuitive interfaces with React and Inertia, and optimize data handling 
+                through efficient MySQL design. I bring a well-rounded, end-to-end approach 
+                to development creating solutions that are stable, scalable, and user-focused.
               </p>
             </div>
 
@@ -191,7 +206,7 @@ const Hero = () => {
             </div>
 
             {/* Contact Info in Main */}
-            <div className="contact-main">
+            {/* <div className="contact-main">
               <div className="contact-info">
                 <div className="info-item">
                   <FaEnvelope />
@@ -205,7 +220,7 @@ const Hero = () => {
                 </div>
                 
               </div>
-            </div>
+            </div> */}
           </div>
 
           {/* Right Column - Callouts & Newsletter */}
@@ -237,13 +252,13 @@ const Hero = () => {
                 <div className="tech-item">
                   <FaMobileAlt className="tech-icon flutter" />
                   <span>Flutter</span>
-                  <small>Coming soon</small>
+                  <small style={{ color: "#8a8a8a" }}>Coming soon</small>
                 </div>
               </div>
             </div>
 
             {/* Newsletter Signup (Contact Form) */}
-            <div className="newsletter-section">
+            {/* <div className="newsletter-section">
               <h3 className="section-title">Get In Touch</h3>
               <p className="newsletter-description">
                 Interested in collaborating or have a project in mind?
@@ -256,7 +271,7 @@ const Hero = () => {
                   Available for freelance projects and full-time opportunities
                 </p>
               </div>
-            </div>
+            </div> */}
 
             {/* Callout - What I Do */}
             <div className="callout expertise-callout">

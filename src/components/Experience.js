@@ -1,4 +1,3 @@
-// Experience.js - 3-Column Layout (CORRECTED VERSION)
 import React from 'react';
 import { 
   FaBuilding, FaServer, FaTools, FaNetworkWired,
@@ -74,7 +73,6 @@ const Experience = () => {
     { name: "Hardware Troubleshooting", level: 95, category: "Infrastructure", icon: <FaTools /> },
     { name: "Network Troubleshooting", level: 90, category: "Infrastructure", icon: <FaNetworkWired /> },
     { name: "POS Systems", level: 85, category: "Infrastructure", icon: <FaDesktop /> },
-    { name: "System Administration", level: 88, category: "Infrastructure", icon: <FaServer /> }
   ];
 
   const systemsBuilt = [
@@ -176,23 +174,7 @@ const Experience = () => {
               </div>
             </div>
 
-            {/* Career Journey Steps */}
-            <div className="journey-section">
-              <h3 className="section-title">Career Journey</h3>
-              <div className="journey-steps">
-                {careerJourney.map((step) => (
-                  <div key={step.step} className="journey-step">
-                    <div className="step-number">{step.step}</div>
-                    <div className="step-icon">{step.icon}</div>
-                    <div className="step-content">
-                      <h4>{step.title}</h4>
-                      <p>{step.description}</p>
-                      <span className="step-period">{step.period}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+
 
             {/* Skills Comparison */}
             <div className="skills-comparison">
@@ -313,31 +295,9 @@ const Experience = () => {
                     ))}
                   </div>
                 </div>
+                
               ))}
             </div>
-
-            {/* Systems Built */}
-            <div className="systems-built">
-              <h3 className="section-title">Systems Developed</h3>
-              <div className="systems-grid">
-                {systemsBuilt.map((system, index) => (
-                  <div key={index} className="system-card">
-                    <div className="system-icon">{system.icon}</div>
-                    <h4>{system.name}</h4>
-                    <p>{system.description}</p>
-                    <div className="system-impact">
-                      <strong>Impact:</strong> {system.impact}
-                    </div>
-                    <div className="system-tech">
-                      {system.technologies.map((tech, idx) => (
-                        <span key={idx}>{tech}</span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
           </div>
 
           {/* Right Column - Skills & Stats */}
@@ -365,29 +325,6 @@ const Experience = () => {
                     <span className="skill-level">{skill.level}%</span>
                   </div>
                 ))}
-              </div>
-            </div>
-
-            {/* Stats Summary */}
-            <div className="stats-summary">
-              <h3 className="section-title">Career Stats</h3>
-              <div className="stats-grid">
-                <div className="stat-item">
-                  <div className="stat-number">120+</div>
-                  <div className="stat-label">Branches Supported</div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-number">3</div>
-                  <div className="stat-label">Systems Built</div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-number">2+</div>
-                  <div className="stat-label">Years Experience</div>
-                </div>
-                <div className="stat-item">
-                  <div className="stat-number">10+</div>
-                  <div className="stat-label">Technologies</div>
-                </div>
               </div>
             </div>
 
@@ -421,38 +358,6 @@ const Experience = () => {
                 </div>
               </div>
             </div>
-
-            {/* Experience Summary */}
-            <div className="experience-summary">
-              <h3 className="section-title">Experience Highlights</h3>
-              <div className="highlights-list">
-                <div className="highlight-item">
-                  <div className="highlight-icon">✓</div>
-                  <div className="highlight-text">
-                    Managed IT infrastructure for 120+ nationwide branches
-                  </div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">✓</div>
-                  <div className="highlight-text">
-                    Developed internal systems that improved operational efficiency
-                  </div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">✓</div>
-                  <div className="highlight-text">
-                    Transitioned from infrastructure to full-stack development
-                  </div>
-                </div>
-                <div className="highlight-item">
-                  <div className="highlight-icon">✓</div>
-                  <div className="highlight-text">
-                    Specialized in Laravel, MySQL, and modern web technologies
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </aside>
 
         </main>
