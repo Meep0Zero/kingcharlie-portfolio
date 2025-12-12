@@ -252,7 +252,7 @@ const Hero = () => {
                 <div className="tech-item">
                   <FaMobileAlt className="tech-icon flutter" />
                   <span>Flutter</span>
-                  <small style={{ color: "#8a8a8a" }}>Coming soon</small>
+                  {/* <small style={{ color: "#8a8a8a" }}>Coming soon</small> */}
                 </div>
               </div>
             </div>

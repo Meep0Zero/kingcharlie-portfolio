@@ -279,7 +279,7 @@
 
 /* Experience Cards */
 .experience-card {
-  background: white;
+  background: #f3f0ea;
   border-radius: 12px;
   padding: 30px;
   border: 1px solid #e2e8f0;
@@ -350,7 +350,7 @@
 
 .status-badge.previous {
   background: #f1f5f9;
-  color: #475569;
+  color: #ee8f9b;
 }
 
 .card-details {

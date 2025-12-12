@@ -44,7 +44,7 @@ const Experience = () => {
         "Developed ticketing system for IT support requests",
         "Created navigation system for efficient system access"
       ],
-      technologies: ["Network Troubleshooting", "Hardware Repair", "POS Systems", "Oracle", "Windows OS"]
+      technologies: ["Network Troubleshooting", "Hardware Repair", "POS Systems", "Software Installation", "Windows OS"]
     },
     {
       id: 3,
@@ -67,7 +67,7 @@ const Experience = () => {
 
   const skills = [
     { name: "Laravel Development", level: 90, category: "Backend", icon: <FaCode /> },
-    { name: "PHP Programming", level: 85, category: "Backend", icon: <FaCogs /> },
+
     { name: "MySQL Database", level: 88, category: "Database", icon: <FaDatabase /> },
     { name: "React/Inertia.js", level: 80, category: "Frontend", icon: <FaCode /> },
     { name: "Hardware Troubleshooting", level: 95, category: "Infrastructure", icon: <FaTools /> },
@@ -147,35 +147,6 @@ const Experience = () => {
           
           {/* Left Column - Timeline & Journey */}
           <aside className="experience-left-column">
-            
-            {/* Career Timeline */}
-            <div className="timeline-section">
-              <h3 className="section-title">
-                <FaCalendarAlt /> Career Timeline
-              </h3>
-              <div className="timeline-list">
-                {experiences.map((exp) => (
-                  <div key={exp.id} className="timeline-item">
-                    <div className="timeline-marker" style={{ backgroundColor: exp.color }}>
-                      {exp.icon}
-                    </div>
-                    <div className="timeline-content">
-                      <div className="timeline-header">
-                        <h4 className="timeline-position">{exp.position}</h4>
-                        <span className="timeline-company">{exp.company}</span>
-                      </div>
-                      <div className="timeline-details">
-                        <span className="timeline-period">{exp.period}</span>
-                        <span className="timeline-location">{exp.location}</span>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-
-
             {/* Skills Comparison */}
             <div className="skills-comparison">
               <h3 className="section-title">Skills Overview</h3>
@@ -193,6 +164,31 @@ const Experience = () => {
                       ></div>
                       <span className="comparison-percentage">{skill.level}%</span>
                     </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Skills Progress */}
+            <div className="skills-progress">
+              <h3 className="section-title">Technical Skills</h3>
+              <div className="skills-list">
+                {skills.map((skill) => (
+                  <div key={skill.name} className="skill-item">
+                    <div className="skill-info">
+                      <div className="skill-icon">{skill.icon}</div>
+                      <div className="skill-details">
+                        <span className="skill-name">{skill.name}</span>
+                        <span className="skill-category">{skill.category}</span>
+                      </div>
+                    </div>
+                    <div className="skill-progress-bar">
+                      <div 
+                        className="skill-progress-fill"
+                        style={{ width: `${skill.level}%` }}
+                      ></div>
+                    </div>
+                    <span className="skill-level">{skill.level}%</span>
                   </div>
                 ))}
               </div>
@@ -299,66 +295,6 @@ const Experience = () => {
               ))}
             </div>
           </div>
-
-          {/* Right Column - Skills & Stats */}
-          <aside className="experience-right-column">
-            
-            {/* Skills Progress */}
-            <div className="skills-progress">
-              <h3 className="section-title">Technical Skills</h3>
-              <div className="skills-list">
-                {skills.map((skill) => (
-                  <div key={skill.name} className="skill-item">
-                    <div className="skill-info">
-                      <div className="skill-icon">{skill.icon}</div>
-                      <div className="skill-details">
-                        <span className="skill-name">{skill.name}</span>
-                        <span className="skill-category">{skill.category}</span>
-                      </div>
-                    </div>
-                    <div className="skill-progress-bar">
-                      <div 
-                        className="skill-progress-fill"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
-                    </div>
-                    <span className="skill-level">{skill.level}%</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Key Technologies */}
-            <div className="key-technologies">
-              <h3 className="section-title">Core Technologies</h3>
-              <div className="tech-grid">
-                <div className="tech-item primary">
-                  <FaCode />
-                  <span>Laravel</span>
-                </div>
-                <div className="tech-item primary">
-                  <FaCogs />
-                  <span>PHP</span>
-                </div>
-                <div className="tech-item primary">
-                  <FaDatabase />
-                  <span>MySQL</span>
-                </div>
-                <div className="tech-item">
-                  <FaNetworkWired />
-                  <span>Networking</span>
-                </div>
-                <div className="tech-item">
-                  <FaTools />
-                  <span>Hardware</span>
-                </div>
-                <div className="tech-item">
-                  <FaDesktop />
-                  <span>POS Systems</span>
-                </div>
-              </div>
-            </div>
-          </aside>
 
         </main>
       </div>
