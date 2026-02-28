@@ -138,7 +138,7 @@ const ChatBot = () => {
         'HTTP-Referer': window.location.origin,
       },
       body: JSON.stringify({
-        model: 'mistralai/mistral-7b-instruct:free', // FREE model
+        model: 'mistralai/mistral-7b-instruct:free', 
         messages: [
           { role: 'system', content: SYSTEM_PROMPT },
           ...history,
@@ -317,7 +317,7 @@ const ChatBot = () => {
               <FaServer title="Infrastructure" />
               <FaMicrochip title="AI" />
             </div>
-            <span className="cb-footer-label">Powered by OpenRouter</span>
+            <span className="cb-footer-label">Powered by Gemini | OpenRouter</span>
           </div>
 
         </div>
