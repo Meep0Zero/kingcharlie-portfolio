@@ -28,8 +28,8 @@
 }
 
 .profile-image-container {
-  width: 180px;
-  height: 180px;
+  width: 380px;
+  height: 380px;
 }
 
 .profile-image {
@@ -269,7 +269,7 @@
 .projects-listing {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 20px;
 }
 
 .projects-grid {
@@ -914,6 +914,7 @@ ul { list-style: none; }
 .profile-frame {
   width: 350px;
   height: 360px;
+  top: -100px;
   position: relative;
 }
 .profile-frame::before {

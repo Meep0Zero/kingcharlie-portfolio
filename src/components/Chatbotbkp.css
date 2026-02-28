@@ -276,65 +276,14 @@
   border-bottom-right-radius: 4px;
 }
 
-/* API key warning banner */
-.cb-api-warn {
-  background: #fef9ed;
-  border-bottom: 1px solid #f0d88a;
-  padding: 10px 16px;
-  font-size: 0.75rem;
-  color: #7a5718;
-  line-height: 1.5;
-  flex-shrink: 0;
-}
-.cb-api-warn code {
-  font-family: 'SFMono-Regular', Consolas, monospace;
-  background: rgba(0,0,0,0.07);
-  padding: 1px 5px;
-  border-radius: 3px;
-  font-size: 0.72rem;
-}
-
-/* Error bubble */
-.cb-msg-bubble--error {
-  border-color: rgba(122, 30, 30, 0.2);
-  background: #fdf5f5;
-}
-
-/* Error banner below messages */
-.cb-error-banner {
-  font-size: 0.72rem;
-  color: var(--error, #7a1e1e);
-  text-align: center;
-  padding: 6px 16px;
-  opacity: 0.7;
-}
-
 /* Typing bubble */
 .cb-msg-bubble--typing {
-  padding: 13px 16px;
+  padding: 14px 18px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
 }
-
-/* Typing dots */
-.cb-typing-dots {
-  display: flex;
-  gap: 4px;
-  align-items: center;
-  flex-shrink: 0;
-}
-
-/* Typing hint text */
-.cb-typing-hint {
-  font-size: 0.75rem;
-  font-weight: 300;
-  color: var(--ink-20);
-  font-style: italic;
-  white-space: nowrap;
-}
-
-.cb-typing-dots span {
+.cb-msg-bubble--typing span {
   width: 5px;
   height: 5px;
   background: var(--ink-20);

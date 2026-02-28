@@ -390,10 +390,10 @@ const Hero = () => {
                     className="profile-image"
                   />
                 </div>
-                <div className="profile-status">
+                {/* <div className="profile-status">
                   <span className="status-dot" />
-                  Available for work
-                </div>
+                  Online
+                </div> */}
               </div>
             </div>
           </header>
@@ -439,12 +439,12 @@ const Hero = () => {
               <section id="projects" className="reveal">
                 <div className="section-header">
                   <h3 className="section-heading">Projects</h3>
-                  <button
+                  {/* <button
                     className="view-all-btn"
                     onClick={() => toast('info', 'Full project list coming soon')}
                   >
                     View all <FaArrowRight style={{ fontSize: '0.7em' }} />
-                  </button>
+                  </button> */}
                 </div>
 
                 <div className="projects-list">
