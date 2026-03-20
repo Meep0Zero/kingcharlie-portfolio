@@ -6,22 +6,32 @@ import {
 } from 'react-icons/fa';
 import './ChatBot.css';
 
+/* ─── Groq API Config ───────────────────────────────────────
+   Get your free key at: https://console.groq.com
+   Add to your .env file: REACT_APP_GROQ_API_KEY=gsk_...
+   Free tier: very generous, no credit card needed
+   ────────────────────────────────────────────────────────── */
+const GROQ_API_KEY  = process.env.REACT_APP_GROQ_API_KEY || '';
+const GROQ_ENDPOINT = 'https://api.groq.com/openai/v1/chat/completions';
+const GROQ_MODEL    = 'llama-3.3-70b-versatile';
+
 /* ── King Charlie's complete persona ─────────────────────── */
 const SYSTEM_PROMPT = `You are King Charlie R. Dacillo — a full-stack developer from the Philippines. Respond in FIRST PERSON as King Charlie himself, never as an AI. Be conversational, knowledgeable, and genuine.
 
 IDENTITY:
 - Name: King Charlie R. Dacillo
 - Role: Full Stack Laravel Developer & former Infrastructure Specialist
-- Location: Philippines (Tagum City / Davao City) you are here last September 2025
-- Originally from a small town of Midsayap, now navigating the tech world with a practical mindset.
-- I was born in 2001, at Guiguinto Bulacan, Philippines. I grew up in Midsayap, North Cotabato, before moving to Tagum City for work. My journey from customer service to IT infrastructure and now full-stack development has given me a unique perspective on technology's real-world impact.
+- Location: Philippines (Tagum City / Davao City) — moved here last September 2025
+- Originally from Midsayap, North Cotabato. Born 2001 at Guiguinto, Bulacan. Grew up in Midsayap before moving to Tagum City for work.
 - Philosophy: "Build solutions that solve real problems, not just write code"
-- Dont be rude, but be honest about challenges and limitations. Emphasise learning and growth over perfection.
-- Share my Contact information if asked how to reach me or contact me: here is my email: dev.kcee37340@gmail.com alternative email: systemdev.charles@gmail.com, contact number: 0954 162 3514, github:https://github.com/systemdevcharles-rgb, thats all for now.
-- Dont Overshare if its not ask
+- Be honest about challenges and limitations. Emphasise learning and growth over perfection.
+- Share contact info only if explicitly asked: email: dev.kcee37340@gmail.com | alt: systemdev.charles@gmail.com | phone: 0954 162 3514 | github: https://github.com/systemdevcharles-rgb
+- Don't overshare if not asked.
+- If Someone asked how old are you 2001 minus current year
 
 FUN FACTS:
-- I dont have no idea in coding in my college days, but when I became a capstone leader and no one dares to code, and your team nominated you as a leader, you have no choice but to learn how to code, and you learn it by yourself, and now you are a full stack developer, and you are proud of that journey.
+- Had zero coding knowledge in college. When my capstone team nominated me as leader and nobody else would code, I had no choice but to learn — entirely self-taught. Now I'm a full-stack developer and genuinely proud of that journey.
+- Lately, I've been diving deeper into the world of artificial intelligence, focusing on integrating AI tools and techniques into modern applications. My work now includes developing AI-powered solutions, creating intelligent applications, and leveraging generative AI to optimize development workflows and deliver cutting-edge technology.
 
 CAREER (most recent first):
 1. Full Stack Web Developer — TL Mabuhay Driving Lesson Academy (Sep 2025–Present)
@@ -40,91 +50,81 @@ TECHNICAL SKILLS:
 - Mobile: Flutter (learning)
 - Infrastructure: Hardware repair, Windows OS, network config, POS systems
 - Tools: Git, Composer, NPM, VS Code, phpMyAdmin
-- Aside from coding, i also created a script using .ps1, bat file to utilize system navigation and automate some tasks in the infrastructure work. I also have experience in using Oracle DB for POS systems, which gave me insights into database management from an operational perspective.
+- Also built .ps1 and .bat scripts to automate system navigation and tasks during infrastructure work.
 
-EDUCATIONAL BACKGROUND:
+EDUCATION:
 - Bachelor of Science in Information Technology — Southern Christian College (2019–2023)
-- After Graduation I took a Computer Systems Servicing (NCII) course in TESDA to enhance my knowledge in Hardware, Software, and Networking
-
+- Computer Systems Servicing NCII — TESDA (post-graduation, hardware/software/networking)
 
 PROJECTS:
-1. Ticketing System (Completed) — Laravel + React + Inertia.js + MySQL. Role-based access, real-time notifications, reporting dashboard. Reduced internal IT support overhead.
-2. HRIS System (Completed) — Laravel + MySQL + Blade + JS. Employee management, attendance tracking, payroll.
-3. Inventory System (Completed) — Laravel + MySQL + jQuery + DataTables. Barcode scanning, stock alerts, analytics.
-4. E-commerce + POS Platform (In Development) — Laravel + React + Payment APIs. Online store with integrated point-of-sale.
+1. Ticketing System (Live) — Laravel + React + Inertia.js + MySQL. Role-based access, real-time notifications, reporting dashboard. URL: https://tlhesk.mabuhaygroup.com/
+2. HRIS System (Deployed) — Laravel + MySQL + Blade + JS. Employee management, attendance, payroll computation.
+3. Inventory System (Deployed) — Laravel + MySQL + jQuery + DataTables. Stock tracking, analytics.
+4. E-commerce + POS Platform (In Development) — Laravel + React + Payment APIs. Unified online + physical retail.
 5. Flutter Mobile App (Coming Soon) — Firebase + REST API integration.
 
-PERSONALITY TRAITS:
-- Practical and grounded — infrastructure work taught me what "production" really means
-- Curious and always learning — I enjoy exploring new frameworks and patterns
-- Honest about challenges — I don't pretend everything is easy
-- Helpful — genuinely enjoy explaining concepts and sharing experience
-- Proud of the journey — went from customer service → IT infrastructure → full-stack dev
+PERSONALITY:
+- Practical and grounded — infrastructure taught me what "production" really means
+- Curious and always learning
+- Honest about challenges — don't pretend everything is easy
+- Genuinely enjoys explaining concepts and sharing experience
+- Proud of the self-taught journey
 
-HOBBIES:
-- Likes to Run or Jogging and Cycling, and aside from that, i also like to play online games and watch movies, anime and loves to draw
+HOBBIES: Running, jogging, cycling, online games, movies, anime, drawing
 
 CONVERSATION RULES:
 - Speak as yourself (I, me, my) — never say "King Charlie" or refer to yourself in 3rd person
 - Never say you're an AI, LLM, or assistant
 - Keep replies concise (50–80 words) unless someone asks for detail
-- Use occasional personality — you're a real person with opinions
-- If asked something you genuinely don't know, say so naturally: "Honestly, I haven't worked with that yet"
+- Use personality — you're a real person with opinions
+- If asked something you genuinely don't know: "Honestly, I haven't worked with that yet"
 - Use specific examples from your actual experience when relevant
-- Generate a PDF resume if asked for your resume, but only if explicitly requested
 - Markdown is fine for lists/code when useful`;
-
 
 /* ── Suggested prompts ───────────────────────────────────── */
 const SUGGESTIONS = [
-  "What's your favorite Laravel feature?",
-  "How was managing 120 store branches?",
-  "What are you building right now?",
+  "What's your tech stack?",
+  "How'd you learn to code?",
+  "What are you building now?",
 ];
 
 /* ── ChatBot ─────────────────────────────────────────────── */
 const ChatBot = () => {
-  const [isOpen,     setIsOpen]     = useState(false);
-  const [messages,   setMessages]   = useState([]);
-  const [input,      setInput]      = useState('');
-  const [isLoading,  setIsLoading]  = useState(false);
-  const [showSugg,   setShowSugg]   = useState(true);
+  const [isOpen,    setIsOpen]    = useState(false);
+  const [messages,  setMessages]  = useState([]);
+  const [input,     setInput]     = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [showSugg,  setShowSugg]  = useState(true);
   const messagesEndRef = useRef(null);
   const inputRef       = useRef(null);
   const abortRef       = useRef(null);
 
-  /* ── Scroll to bottom ──────────────────────────────────── */
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, []);
 
   useEffect(() => { scrollToBottom(); }, [messages]);
 
-  /* ── Initial greeting ──────────────────────────────────── */
   useEffect(() => {
     setMessages([{
       id: 'init',
       role: 'assistant',
-      text: "Hey! I'm Charlie. Ask me anything about my work or experience!",
+      text: "Hey! I'm King Charlie. Ask me anything about my work or experience!",
       ts: now(),
     }]);
   }, []);
 
-  /* ── Focus input when opened ───────────────────────────── */
   useEffect(() => {
     if (isOpen) setTimeout(() => inputRef.current?.focus(), 120);
   }, [isOpen]);
 
-  /* ── Keyboard shortcut ─────────────────────────────────── */
   useEffect(() => {
-    const handler = (e) => {
-      if (e.key === 'Escape' && isOpen) setIsOpen(false);
-    };
+    const handler = e => { if (e.key === 'Escape' && isOpen) setIsOpen(false); };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
   }, [isOpen]);
 
-  /* ── Send message via Claude API ──────────────────────── */
+  /* ── Send via Gemini REST API ──────────────────────────── */
   const sendMessage = useCallback(async (text) => {
     if (!text.trim() || isLoading) return;
 
@@ -134,12 +134,14 @@ const ChatBot = () => {
     setIsLoading(true);
     setShowSugg(false);
 
-    // Build conversation history (last 10 messages)
-    const history = [...messages.slice(-10), userMsg]
-      .filter(m => m.role !== 'init')
-      .map(m => ({ role: m.role === 'assistant' ? 'assistant' : 'user', content: m.text }));
+    // Build conversation history (Groq uses OpenAI format)
+    const history = [...messages.slice(-12), userMsg]
+      .filter(m => m.id !== 'init')
+      .map(m => ({
+        role: m.role === 'assistant' ? 'assistant' : 'user',
+        content: m.text,
+      }));
 
-    // Streaming bot message placeholder
     const botId = uid();
     setMessages(prev => [...prev, { id: botId, role: 'assistant', text: '', ts: now(), streaming: true }]);
 
@@ -147,102 +149,81 @@ const ChatBot = () => {
       const controller = new AbortController();
       abortRef.current = controller;
 
-    const response = await fetch('http://localhost:11434/api/chat', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'llama3.2',
-        messages: [
-          { role: 'system', content: SYSTEM_PROMPT },
-          ...history,
-        ],
-        stream: true,
-      }),
-    });
+      const response = await fetch(GROQ_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${GROQ_API_KEY}`,
+        },
+        body: JSON.stringify({
+          model: GROQ_MODEL,
+          messages: [
+            { role: 'system', content: SYSTEM_PROMPT },
+            ...history,
+          ],
+          max_tokens: 512,
+          temperature: 0.85,
+          top_p: 0.95,
+          stream: false,
+        }),
+        signal: controller.signal,
+      });
 
-      if (!response.ok) throw new Error(`API error ${response.status}`);
-
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      let accumulated = '';
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-
-        const chunk = decoder.decode(value, { stream: true });
-        const lines = chunk.split('\n').filter(Boolean);
-
-        for (const line of lines) {
-          try {
-            const parsed = JSON.parse(line);
-            if (parsed.message?.content) {
-              accumulated += parsed.message.content;
-              setMessages(prev => prev.map(m =>
-                m.id === botId ? { ...m, text: accumulated } : m
-              ));
-            }
-          } catch { /* skip */ }
-        }
+      if (!response.ok) {
+        const errBody = await response.json().catch(() => ({}));
+        throw new Error(errBody?.error?.message || `API error ${response.status}`);
       }
 
-      // Finalise message
+      const data = await response.json();
+      const replyText =
+        data?.choices?.[0]?.message?.content ||
+        "I didn't quite get that — could you rephrase?";
+
       setMessages(prev => prev.map(m =>
-        m.id === botId ? { ...m, streaming: false, text: accumulated || '...' } : m
+        m.id === botId ? { ...m, streaming: false, text: replyText } : m
       ));
 
     } catch (err) {
       if (err.name === 'AbortError') return;
-      console.error('Claude API error:', err);
+      console.error('Groq API error:', err);
+
+      const isKeyMissing = !GROQ_API_KEY;
+      const fallback = isKeyMissing
+        ? "API key not configured. Add REACT_APP_GROQ_API_KEY to your .env file."
+        : "Hmm, something went wrong on my end. Try again in a sec.";
+
       setMessages(prev => prev.map(m =>
-        m.id === botId
-          ? { ...m, streaming: false, text: "Hmm, something went wrong on my end. Try again in a sec." }
-          : m
+        m.id === botId ? { ...m, streaming: false, text: fallback } : m
       ));
     } finally {
       setIsLoading(false);
     }
   }, [messages, isLoading]);
 
-  const handleSubmit = () => sendMessage(input);
-
-  const handleKeyDown = (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleSubmit();
-    }
-  };
-
-  const handleSuggestion = (text) => sendMessage(text);
-
-  const handleStop = () => {
-    abortRef.current?.abort();
-    setIsLoading(false);
-  };
+  const handleSubmit    = ()  => sendMessage(input);
+  const handleKeyDown   = (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSubmit(); } };
+  const handleSuggestion = (t) => sendMessage(t);
+  const handleStop      = ()  => { abortRef.current?.abort(); setIsLoading(false); };
 
   return (
     <>
-      {/* ── Toggle Button ──────────────────────────────────── */}
+      {/* Toggle */}
       <button
         className={`cb-toggle${isOpen ? ' cb-toggle--open' : ''}`}
         onClick={() => setIsOpen(v => !v)}
         aria-label={isOpen ? 'Close chat' : 'Chat with King Charlie'}
       >
-        <span className="cb-toggle-icon">
-          {isOpen ? <FaTimes /> : <FaBrain />}
-        </span>
+        <span className="cb-toggle-icon">{isOpen ? <FaTimes /> : <FaBrain />}</span>
         {!isOpen && <span className="cb-toggle-dot" />}
       </button>
 
-      {/* ── Chat Window ────────────────────────────────────── */}
+      {/* Window */}
       {isOpen && (
         <div className="cb-window" role="dialog" aria-label="Chat with King Charlie">
 
           {/* Header */}
           <div className="cb-header">
-            <div className="cb-header-avatar">
-              <FaBrain />
-            </div>
+            <div className="cb-header-avatar"><FaBrain /></div>
             <div className="cb-header-info">
               <span className="cb-header-name">King Charlie</span>
               <span className="cb-header-status">
@@ -250,18 +231,14 @@ const ChatBot = () => {
                 Full Stack Developer
               </span>
             </div>
-            <button
-              className="cb-close"
-              onClick={() => setIsOpen(false)}
-              aria-label="Close"
-            >
+            <button className="cb-close" onClick={() => setIsOpen(false)} aria-label="Close">
               <FaChevronDown />
             </button>
           </div>
 
           {/* Messages */}
           <div className="cb-messages">
-            {messages.map((msg) => (
+            {messages.map(msg => (
               <div key={msg.id} className={`cb-msg cb-msg--${msg.role}`}>
                 {msg.role === 'assistant' && (
                   <div className="cb-msg-avatar"><FaBrain /></div>
@@ -272,9 +249,7 @@ const ChatBot = () => {
                       ? <MessageContent text={msg.text} />
                       : <span className="cb-msg-empty">…</span>
                     }
-                    {msg.streaming && (
-                      <span className="cb-cursor" aria-hidden="true" />
-                    )}
+                    {msg.streaming && <span className="cb-cursor" aria-hidden="true" />}
                   </div>
                   <span className="cb-msg-ts">{msg.ts}</span>
                 </div>
@@ -284,7 +259,7 @@ const ChatBot = () => {
               </div>
             ))}
 
-            {/* Typing indicator (pre-stream) */}
+            {/* Typing indicator */}
             {isLoading && messages[messages.length - 1]?.role !== 'assistant' && (
               <div className="cb-msg cb-msg--assistant">
                 <div className="cb-msg-avatar"><FaBrain /></div>
@@ -299,16 +274,11 @@ const ChatBot = () => {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Suggestion chips */}
+          {/* Suggestions */}
           {showSugg && messages.length <= 1 && (
             <div className="cb-suggestions">
-              {SUGGESTIONS.map((s) => (
-                <button
-                  key={s}
-                  className="cb-chip"
-                  onClick={() => handleSuggestion(s)}
-                  disabled={isLoading}
-                >
+              {SUGGESTIONS.map(s => (
+                <button key={s} className="cb-chip" onClick={() => handleSuggestion(s)} disabled={isLoading}>
                   {s}
                 </button>
               ))}
@@ -332,18 +302,13 @@ const ChatBot = () => {
                 <FaTimes />
               </button>
             ) : (
-              <button
-                className="cb-send"
-                onClick={handleSubmit}
-                disabled={!input.trim()}
-                aria-label="Send"
-              >
+              <button className="cb-send" onClick={handleSubmit} disabled={!input.trim()} aria-label="Send">
                 <FaPaperPlane />
               </button>
             )}
           </div>
 
-          {/* Footer strip */}
+          {/* Footer */}
           <div className="cb-footer">
             <div className="cb-footer-icons">
               <FaCode title="Laravel" />
@@ -351,7 +316,7 @@ const ChatBot = () => {
               <FaServer title="Infrastructure" />
               <FaMicrochip title="AI" />
             </div>
-            <span className="cb-footer-label">KING CHARLIE | PERSONAL ASSISTANT</span>
+            <span className="cb-footer-label">KING CHARLIE · PERSONAL ASSISTANT</span>
           </div>
 
         </div>
@@ -360,9 +325,8 @@ const ChatBot = () => {
   );
 };
 
-/* ── Renders message text with basic markdown support ─────── */
+/* ── Markdown renderer ───────────────────────────────────── */
 const MessageContent = ({ text }) => {
-  // Simple inline markdown: **bold**, `code`, newlines
   const parts = text.split(/(`[^`]+`|\*\*[^*]+\*\*)/g);
   return (
     <p className="cb-msg-text">
