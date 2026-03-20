@@ -2,7 +2,7 @@
   "name": "kingcharlie",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://systemdevcharles-rgb.github.io/kingcharlieee",
+  "homepage": "https://systemdevcharles-rgb.github.io/charles-site",
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
     "@testing-library/jest-dom": "^5.17.0",
