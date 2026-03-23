@@ -45,7 +45,7 @@ import ecommerceImage15 from '../assets/projects/ecommerce-15.png';
 import ecommerceImage16 from '../assets/projects/ecommerce-16.png';
 import ecommerceImage17 from '../assets/projects/ecommerce-17.png';
 import ecommerceImage18 from '../assets/projects/ecommerce-18.png';
-import resumePDF from '../assets/resume.pdf';
+import resumePDF from '../assets/KingCharlie_Dacillo_Portfolio.pdf';
 
 /* ── Toast ──────────────────────────────────────────────── */
 const TOAST_ICONS = {
@@ -344,10 +344,10 @@ const Hero = () => {
     setResumeDownloading(true);
     const link = document.createElement('a');
     link.href = resumePDF;
-    link.download = 'KingCharlie_Dacillo_Resume.pdf';
+    link.download = 'KingCharlie_Dacillo_Portfolio.pdf';
     document.body.appendChild(link); link.click(); document.body.removeChild(link);
     await new Promise(r => setTimeout(r, 1200));
-    toast('success', 'Resume downloaded successfully');
+    toast('success', 'Portfolio downloaded successfully');
     setResumeDownloading(false);
   };
 
