@@ -9,11 +9,22 @@
   border-color: #e1ddd5;
 }
 [data-theme="light"] .cb-messages {
-  background: #f7f5f1;
+  background: #f2efe9;
 }
+/* Assistant bubble — warm card with visible border */
 [data-theme="light"] .cb-msg-bubble {
   background: #ffffff;
-  border-color: #e1ddd5;
+  border-color: #ccc8be;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+}
+/* User bubble — solid dark ink, white text */
+[data-theme="light"] .cb-msg--user .cb-msg-bubble {
+  background: #0d0d0c;
+  border-color: #0d0d0c;
+  box-shadow: none;
+}
+[data-theme="light"] .cb-msg--user .cb-msg-text {
+  color: rgba(255,255,255,0.92);
 }
 [data-theme="light"] .cb-msg-avatar {
   background: #f0ede7;
@@ -55,7 +66,7 @@
   border-color: #e1ddd5;
 }
 [data-theme="light"] .cb-msg-text {
-  color: rgba(13,13,12,0.80);
+  color: #0d0d0c;
 }
 [data-theme="light"] .cb-msg-ts {
   color: rgba(13,13,12,0.28);
@@ -98,11 +109,22 @@
   border-color: #2a2825;
 }
 [data-theme="dark"] .cb-messages {
-  background: #100f0e;
+  background: #111010;
 }
+/* Assistant bubble — noticeably lighter than background */
 [data-theme="dark"] .cb-msg-bubble {
-  background: #181714;
-  border-color: #2a2825;
+  background: #272421;
+  border-color: #3a3733;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+}
+/* User bubble — warm cream accent, dark text */
+[data-theme="dark"] .cb-msg--user .cb-msg-bubble {
+  background: #ede8de;
+  border-color: #ede8de;
+  box-shadow: none;
+}
+[data-theme="dark"] .cb-msg--user .cb-msg-text {
+  color: #0d0d0c;
 }
 [data-theme="dark"] .cb-msg-avatar {
   background: #1e1c1a;
@@ -144,7 +166,7 @@
   border-color: #2a2825;
 }
 [data-theme="dark"] .cb-msg-text {
-  color: rgba(237,232,222,0.82);
+  color: rgba(237,232,222,0.92);
 }
 [data-theme="dark"] .cb-msg-ts {
   color: rgba(237,232,222,0.28);
@@ -434,7 +456,6 @@
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 3px;
 }
-
 .cb-msg-bubble--typing {
   padding: 12px 16px;
   display: flex;
