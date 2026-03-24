@@ -92,9 +92,11 @@ button { font-family:inherit; cursor:pointer; border:none; background:none; }
 ul { list-style:none; }
 strong { font-weight: 600; }
 
-::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--bdr); border-radius: 99px; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--bdr); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ink-30); }
+* { scrollbar-color: var(--bdr) var(--bg); scrollbar-width: thin; }
 
 /* ─── Reveals ────────────────────────────────────────────── */
 .reveal       { opacity:0; transform:translateY(22px); transition:opacity .7s var(--ease),transform .7s var(--ease); }
@@ -175,6 +177,12 @@ strong { font-weight: 600; }
 .nav-link:hover  { color:var(--ink-80); }
 .nav-link:hover::after,.nav-link.active::after { transform:scaleX(1); }
 .nav-link.active { color:var(--ink); }
+
+.nav-logo {
+  height: 40px;
+  max-width: 100%;
+  object-fit: contain;
+}
 
 .theme-btn { flex-shrink:0; padding:0; }
 .theme-track {

@@ -46,6 +46,7 @@ import ecommerceImage16 from '../assets/projects/ecommerce-16.png';
 import ecommerceImage17 from '../assets/projects/ecommerce-17.png';
 import ecommerceImage18 from '../assets/projects/ecommerce-18.png';
 import resumePDF from '../assets/KingCharlie_Dacillo_Portfolio.pdf';
+import logo from '../assets/kayecee.png';
 
 /* ── Toast ──────────────────────────────────────────────── */
 const TOAST_ICONS = {
@@ -370,7 +371,9 @@ const Hero = () => {
       {/* NAV */}
       <nav className="site-nav">
         <div className="nav-inner">
-          <a href="#home" className="nav-brand">KC<em>.</em></a>
+          <a href="#home" className="nav-brand">
+            <img src={logo} className='nav-logo'/>
+          </a>
           <div className="nav-links">
             {NAV_ITEMS.map(({ label, href }) => (
               <a key={label} href={href} className={`nav-link${activeNav === href.slice(1) ? ' active' : ''}`}>{label}</a>
@@ -701,11 +704,11 @@ const Hero = () => {
         </footer>
       </div>
 
-      {showBackToTop && (
-        <button className="back-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Back to top">
+      {/* {showBackToTop && ( */}
+        {/* <button className="back-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Back to top">
           <FaArrowUp />
-        </button>
-      )}
+        </button> */}
+      {/* )} */}
 
       {/* GALLERY MODAL */}
       {gallery.open && gallery.project && (
