@@ -1,8 +1,9 @@
 {
   "files": {
-    "main.css": "/kingcharlie-portfolio/static/css/main.0ae9745c.css",
-    "main.js": "/kingcharlie-portfolio/static/js/main.f828d9fa.js",
+    "main.css": "/kingcharlie-portfolio/static/css/main.0382c427.css",
+    "main.js": "/kingcharlie-portfolio/static/js/main.60e3b057.js",
     "static/js/453.d5c5a335.chunk.js": "/kingcharlie-portfolio/static/js/453.d5c5a335.chunk.js",
+    "static/media/kayecee.png": "/kingcharlie-portfolio/static/media/kayecee.dbb1f478a52784bae8fb.png",
     "static/media/ecommerce-1.png": "/kingcharlie-portfolio/static/media/ecommerce-1.965eb1f3cf4ed816ac52.png",
     "static/media/ecommerce-2.png": "/kingcharlie-portfolio/static/media/ecommerce-2.6f52171394de1f02a598.png",
     "static/media/ecommerce-12.png": "/kingcharlie-portfolio/static/media/ecommerce-12.9ddc56bc142d4fe6a3c8.png",
@@ -38,12 +39,12 @@
     "static/media/comingsoon.png": "/kingcharlie-portfolio/static/media/comingsoon.8d7256324991402aad37.png",
     "static/media/charles.jpg": "/kingcharlie-portfolio/static/media/charles.85b79dbbe7769afb412f.jpg",
     "index.html": "/kingcharlie-portfolio/index.html",
-    "main.0ae9745c.css.map": "/kingcharlie-portfolio/static/css/main.0ae9745c.css.map",
-    "main.f828d9fa.js.map": "/kingcharlie-portfolio/static/js/main.f828d9fa.js.map",
+    "main.0382c427.css.map": "/kingcharlie-portfolio/static/css/main.0382c427.css.map",
+    "main.60e3b057.js.map": "/kingcharlie-portfolio/static/js/main.60e3b057.js.map",
     "453.d5c5a335.chunk.js.map": "/kingcharlie-portfolio/static/js/453.d5c5a335.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0ae9745c.css",
-    "static/js/main.f828d9fa.js"
+    "static/css/main.0382c427.css",
+    "static/js/main.60e3b057.js"
   ]
 }
