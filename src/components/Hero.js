@@ -90,7 +90,7 @@ const NAV_ITEMS = [
   { label: 'About',      href: '#about'      },
   { label: 'Projects',   href: '#projects'   },
   { label: 'Experience', href: '#experience' },
-  { label: 'Contact',    href: '#contact'    },
+  // { label: 'Contact',    href: '#contact'    },
 ];
 
 const STATS = [
@@ -107,7 +107,7 @@ const EXPERTISE_DEEP = [
   },
   {
     icon: <FaReact />,
-    title: 'Frontend Design',
+    title: 'Frontend Engineering',
     color: '#33cffa',
     desc: 'I build interfaces people enjoy using. React with Inertia.js gives me SPA-like reactivity on Laravel backends without the complexity of a decoupled architecture — fast to build, easy to maintain.',
     tags: ['React', 'Inertia.js', 'Vue.js', 'Tailwind CSS', 'Blade Templates'],
@@ -125,6 +125,13 @@ const EXPERTISE_DEEP = [
     color: '#539E43',
     desc: 'Having managed 120+ branch networks, I understand infrastructure from the ground up. Switches, VPNs, POS systems, server deployments — I bring that operational mindset to every application I build.',
     tags: ['Network Infra', 'MERAKI SD-WAN', 'Windows Server', 'POS Systems', 'Active Directory'],
+  },
+  {
+    icon: <FaBrain />,
+    title: 'AI Integration',
+    color: '#9553E9',
+    desc: 'I am actively building AI-powered features — integrating OpenAI APIs for smart automation, generative content, and intelligent workflows. The goal: applications that feel like they think alongside the user.',
+    tags: ['OpenAI API', 'LLM Integration', 'Prompt Engineering', 'AI Workflows'],
   },
 ];
 
@@ -219,7 +226,7 @@ const EXPERIENCES = [
   {
     id: 1,
     company: 'Full Stack Developer',
-    role: 'Software Developer · Self-Directed',
+    role: 'Software Engineer · Self-Directed',
     period: 'Sep 2025 — Present',
     location: 'Tagum City, Philippines',
     type: 'Current',
@@ -365,7 +372,7 @@ const Hero = () => {
       <nav className="site-nav">
         <div className="nav-inner">
           <a href="#home" className="nav-brand">
-            <img src={logo} className='nav-logo'/>
+            <img src={logo} alt="KC Logo" className="nav-logo" />
           </a>
           <div className="nav-links">
             {NAV_ITEMS.map(({ label, href }) => (
@@ -391,7 +398,7 @@ const Hero = () => {
             <div className="hero-left">
               <div className="hero-eyebrow reveal">
                 <span className="eyebrow-dot" />
-                Full Stack Developer · Tagum City, Philippines
+                Full Stack Developer · Philippines
               </div>
               <h1 className="hero-name reveal delay-1">
                 King Charlie<br /><em>R. Dacillo</em>
@@ -411,7 +418,7 @@ const Hero = () => {
                   {resumeDownloading ? <><FaFileAlt /> Downloading…</> : <><FaDownload /> Download CV</>}
                 </button>
                 <a href="#projects" className="btn-secondary">See My Work</a>
-                <a href="#contact" className="btn-ghost">Contact <FaArrowRight className="btn-arrow" /></a>
+                {/* <a href="#contact" className="btn-ghost">Contact <FaArrowRight className="btn-arrow" /></a> */}
               </div>
             </div>
 
@@ -420,9 +427,9 @@ const Hero = () => {
                 <div className="photo-border">
                   <img src={profilePhoto} alt="King Charlie R. Dacillo" className="photo" />
                 </div>
-                <div className="photo-badge">
+                {/* <div className="photo-badge">
                   <span className="pulse-dot" /><span>Available for hire</span>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
@@ -472,8 +479,8 @@ const Hero = () => {
                     ['Experience', '4months Call Center Agent'],
                     ['Learning',   'AI · LLM APIs'],
                     ['Status',     'Open to Work'],
-                  ].map(([k, v]) => (
-                    <li key={k} className="sb-fact-row">
+                  ].map(([k, v], i) => (
+                    <li key={i} className="sb-fact-row">
                       <span className="fact-k">{k}</span>
                       <span className={`fact-v${k === 'Status' ? ' fact-avail' : ''}`}>{v}</span>
                     </li>
@@ -531,7 +538,7 @@ const Hero = () => {
                 <p className="about-lead">I'm a self-driven developer who came up through IT infrastructure — and that background shaped everything about how I write software.</p>
                 <p className="about-p">Most developers never think about why a branch's network goes down at 9am or why a POS system hangs during peak hours. I've been on the other end of those calls. That gave me an instinct for <strong>resilience</strong> — I think about failure modes, edge cases, and production behaviour before I write a single line.</p>
                 <p className="about-p">My stack is deliberate: <strong>Laravel</strong> for its expressive, convention-driven backend. <strong>React + Inertia.js</strong> for reactive UIs without SPA overhead. <strong>MySQL</strong> with careful schema design, because the database is the heart of every system I build.</p>
-                <p className="about-p">Recently, I’ve been exploring artificial intelligence more deeply, with a strong focus on incorporating AI tools and techniques into modern applications. My current work involves building AI-driven solutions, developing intelligent systems, and utilizing generative AI to streamline development processes and deliver innovative, state-of-the-art technology.</p>
+                <p className="about-p">I'm expanding into <strong>AI integration</strong> — not because it's trendy, but because I've seen firsthand how much repetitive cognitive work exists in the systems I build, and I want to eliminate it.</p>
               </div>
               <div className="expertise-grid">
                 {EXPERTISE_DEEP.map(({ icon, title, color, desc, tags }) => (

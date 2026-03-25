@@ -115,7 +115,7 @@ const ChatBot = () => {
     setMessages([{
       id: 'init',
       role: 'assistant',
-      text: "Hey! I'm Charlie. Ask me anything about my work or experience!",
+      text: "Hey! I'm King Charlie. Ask me anything about my work or experience!",
       ts: now(),
     }]);
   }, []);
