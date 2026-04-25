@@ -656,3 +656,45 @@
   color: var(--ink-30);
   transition: color 0.3s;
 }
+
+/* Avatar image styling */
+.cb-header-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cb-header-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cb-avatar-img-container {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: var(--bg-surf);
+  border: 1px solid var(--bdr);
+}
+
+.cb-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* If you also want the toggle button to use the image (optional) */
+.cb-toggle-icon img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}

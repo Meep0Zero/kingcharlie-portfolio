@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"\\\\.\\(js|jsx|css|html|json\\)$\")",
+      "Bash(npm start *)",
+      "Bash(npx react-scripts *)",
+      "WebSearch",
+      "WebFetch(domain:www.esquiremag.ph)",
+      "Bash(npm install *)"
+    ]
+  }
+}

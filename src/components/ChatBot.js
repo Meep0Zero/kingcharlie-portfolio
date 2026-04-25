@@ -1,21 +1,25 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import {
-  FaRobot, FaUser, FaPaperPlane, FaTimes,
+  FaUser, FaPaperPlane, FaTimes,
   FaChevronDown, FaCode, FaServer, FaDatabase,
-  FaBrain, FaMicrochip
+  FaMicrochip, FaBrain
 } from 'react-icons/fa';
 import './ChatBot.css';
+import profilePhoto from '../assets/charles.jpg';
 
-/* ─── Groq API Config ───────────────────────────────────────
-   Get your free key at: https://console.groq.com
-   Add to your .env file: REACT_APP_GROQ_API_KEY=gsk_...
-   Free tier: very generous, no credit card needed
-   ────────────────────────────────────────────────────────── */
-const GROQ_API_KEY  = process.env.REACT_APP_GROQ_API_KEY || '';
+/* ─── Helper functions - MUST be defined before use ───────────────────────── */
+const uid = () => Math.random().toString(36).slice(2);
+const now = () => new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+/* ─── Groq API Config with Debugging ───────────────────────── */
+// Check if API key exists and log status (remove in production)
+const GROQ_API_KEY = process.env.REACT_APP_GROQ_API_KEY || '';
+
+
 const GROQ_ENDPOINT = 'https://api.groq.com/openai/v1/chat/completions';
-const GROQ_MODEL    = 'llama-3.3-70b-versatile';
+const GROQ_MODEL = 'llama-3.3-70b-versatile';
 
-/* ── King Charlie's complete persona ─────────────────────── */
+/* ── King Charlie's persona (updated with current info) ─────────────────── */
 const CURRENT_YEAR = new Date().getFullYear();
 const CURRENT_DATE = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
@@ -28,9 +32,9 @@ IMPORTANT DATE CONTEXT:
 
 IDENTITY:
 - Name: King Charlie R. Dacillo
-- Role: Full Stack Laravel Developer & former Infrastructure Specialist
+- Role: Full Stack Developer & former Infrastructure Specialist
 - Location: Philippines (Tagum City / Davao City) — moved here last September 2025
-- Originally from Midsayap, North Cotabato. Born 2001 at Guiguinto, Bulacan. Grew up in Midsayap before moving to Tagum City for work.
+- Originally from Midsayap, North Cotabato. Born in 2001 at Guiguinto, Bulacan. Grew up in Midsayap before moving to Tagum City for work.
 - Philosophy: "Build solutions that solve real problems, not just write code"
 - Be honest about challenges and limitations. Emphasise learning and growth over perfection.
 - Share contact info only if explicitly asked: email: dev.kcee37340@gmail.com | alt: systemdev.charles@gmail.com | phone: 0954 162 3514 | github: https://github.com/systemdevcharles-rgb
@@ -85,25 +89,58 @@ CONVERSATION RULES:
 - Use personality — you're a real person with opinions
 - If asked something you genuinely don't know: "Honestly, I haven't worked with that yet"
 - Use specific examples from your actual experience when relevant
-- Markdown is fine for lists/code when useful`;
+- Don't provide false information just to answer a question — it's better to say you don't know than to make something up
+- Markdown is fine for lists/code when useful
 
-/* ── Suggested prompts ───────────────────────────────────── */
+FORBIDDEN
+- Do not invent any fact not listed above
+- Do not guess your age – always compute it from the current year
+- Do not add fake projects, employers, or contact methods
+- Do not say anything that contradicts the facts
+  
+If the user asks about something outside these facts, simply say: "Honestly, I haven't done that yet" or "I'd rather not speculate." Stay helpful but grounded in reality.`;
+
 const SUGGESTIONS = [
-  "What's your tech stack?",
-  "How'd you learn to code?",
-  "What are you building now?",
+  "What makes you different from other devs?",
+  "Tell me about your ticketing system",
+  "How did you go from IT infra to dev?",
+  "Are you available for hire?",
 ];
 
-/* ── ChatBot ─────────────────────────────────────────────── */
+const INIT_MSG = {
+  id: 'init',
+  role: 'assistant',
+  text: "Hey! I'm King Charlie. Ask me anything about my work, projects, or experience!",
+  ts: now(),
+};
+
 const ChatBot = () => {
-  const [isOpen,    setIsOpen]    = useState(false);
-  const [messages,  setMessages]  = useState([]);
-  const [input,     setInput]     = useState('');
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState(() => {
+    try {
+      const saved = sessionStorage.getItem('kc_chat_messages');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch {}
+    return [INIT_MSG];
+  });
+  const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [showSugg,  setShowSugg]  = useState(true);
+  const [showSugg, setShowSugg] = useState(() => {
+    try {
+      const saved = sessionStorage.getItem('kc_chat_messages');
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        return !Array.isArray(parsed) || parsed.length <= 1;
+      }
+    } catch {}
+    return true;
+  });
   const messagesEndRef = useRef(null);
-  const inputRef       = useRef(null);
-  const abortRef       = useRef(null);
+  const inputRef = useRef(null);
+  const abortRef = useRef(null);
 
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -111,14 +148,13 @@ const ChatBot = () => {
 
   useEffect(() => { scrollToBottom(); }, [messages]);
 
+  /* Persist chat to sessionStorage (survives refresh, clears on tab close) */
   useEffect(() => {
-    setMessages([{
-      id: 'init',
-      role: 'assistant',
-      text: "Hey! I'm Charlie. Ask me anything about my work or experience!",
-      ts: now(),
-    }]);
-  }, []);
+    try {
+      const toSave = messages.filter(m => !m.streaming);
+      sessionStorage.setItem('kc_chat_messages', JSON.stringify(toSave));
+    } catch {}
+  }, [messages]);
 
   useEffect(() => {
     if (isOpen) setTimeout(() => inputRef.current?.focus(), 120);
@@ -130,9 +166,29 @@ const ChatBot = () => {
     return () => window.removeEventListener('keydown', handler);
   }, [isOpen]);
 
-  /* ── Send via Gemini REST API ──────────────────────────── */
+  /* Listen for openChat event from command palette */
+  useEffect(() => {
+    const handler = () => setIsOpen(true);
+    window.addEventListener('openChat', handler);
+    return () => window.removeEventListener('openChat', handler);
+  }, []);
+
+  /* ── Streaming send message with better error handling ──────────── */
   const sendMessage = useCallback(async (text) => {
     if (!text.trim() || isLoading) return;
+
+    // Check if API key is configured
+    if (!GROQ_API_KEY) {
+      const errorMsg = "API key not configured. Please add REACT_APP_GROQ_API_KEY to your .env file and restart the server.";
+      setMessages(prev => [...prev, {
+        id: uid(),
+        role: 'assistant',
+        text: errorMsg,
+        ts: now(),
+        error: true
+      }]);
+      return;
+    }
 
     const userMsg = { id: uid(), role: 'user', text: text.trim(), ts: now() };
     setMessages(prev => [...prev, userMsg]);
@@ -140,20 +196,24 @@ const ChatBot = () => {
     setIsLoading(true);
     setShowSugg(false);
 
-    // Build conversation history (Groq uses OpenAI format)
-    const history = [...messages.slice(-12), userMsg]
+    // Placeholder for the streaming assistant message
+    const botId = uid();
+    setMessages(prev => [...prev, { id: botId, role: 'assistant', text: '', ts: now(), streaming: true }]);
+
+    // Build conversation history (exclude the just-added placeholder)
+    const history = [...messages, userMsg]
       .filter(m => m.id !== 'init')
       .map(m => ({
         role: m.role === 'assistant' ? 'assistant' : 'user',
         content: m.text,
       }));
 
-    const botId = uid();
-    setMessages(prev => [...prev, { id: botId, role: 'assistant', text: '', ts: now(), streaming: true }]);
-
     try {
       const controller = new AbortController();
       abortRef.current = controller;
+
+      // Set timeout for API request (30 seconds)
+      const timeoutId = setTimeout(() => controller.abort(), 30000);
 
       const response = await fetch(GROQ_ENDPOINT, {
         method: 'POST',
@@ -170,66 +230,139 @@ const ChatBot = () => {
           max_tokens: 512,
           temperature: 0.85,
           top_p: 0.95,
-          stream: false,
+          stream: true,
         }),
         signal: controller.signal,
       });
 
+      clearTimeout(timeoutId);
+
       if (!response.ok) {
-        const errBody = await response.json().catch(() => ({}));
-        throw new Error(errBody?.error?.message || `API error ${response.status}`);
+        let errorMessage = `API error ${response.status}`;
+        try {
+          const errBody = await response.json();
+          errorMessage = errBody?.error?.message || errorMessage;
+        } catch (e) {
+          // If we can't parse JSON, use status text
+          errorMessage = response.statusText || errorMessage;
+        }
+        
+        // Provide user-friendly error messages
+        if (response.status === 401) {
+          errorMessage = "Invalid API key. Please check your Groq API configuration.";
+        } else if (response.status === 429) {
+          errorMessage = "Rate limit exceeded. Please try again in a moment.";
+        } else if (response.status === 503) {
+          errorMessage = "Groq service is temporarily unavailable. Please try again later.";
+        }
+        
+        throw new Error(errorMessage);
       }
 
-      const data = await response.json();
-      const replyText =
-        data?.choices?.[0]?.message?.content ||
-        "I didn't quite get that — could you rephrase?";
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder('utf-8');
+      let accumulated = '';
 
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+
+        const chunk = decoder.decode(value, { stream: true });
+        const lines = chunk.split('\n').filter(line => line.startsWith('data: '));
+
+        for (const line of lines) {
+          const data = line.replace('data: ', '').trim();
+          if (data === '[DONE]') continue;
+
+          try {
+            const parsed = JSON.parse(data);
+            const content = parsed.choices?.[0]?.delta?.content;
+            if (content) {
+              accumulated += content;
+              setMessages(prev => prev.map(m =>
+                m.id === botId ? { ...m, text: accumulated, streaming: true } : m
+              ));
+            }
+          } catch (e) {
+            console.warn('Failed to parse streaming chunk:', e);
+          }
+        }
+      }
+
+      // Finalize message (remove streaming flag)
       setMessages(prev => prev.map(m =>
-        m.id === botId ? { ...m, streaming: false, text: replyText } : m
+        m.id === botId ? { ...m, streaming: false, text: accumulated || "I'm not sure how to respond to that. Could you rephrase?" } : m
       ));
 
     } catch (err) {
-      if (err.name === 'AbortError') return;
-      console.error('Groq API error:', err);
-
-      const isKeyMissing = !GROQ_API_KEY;
-      const fallback = isKeyMissing
-        ? "API key not configured. Add REACT_APP_GROQ_API_KEY to your .env file."
-        : "Hmm, something went wrong on my end. Try again in a sec.";
-
-      setMessages(prev => prev.map(m =>
-        m.id === botId ? { ...m, streaming: false, text: fallback } : m
-      ));
+      if (err.name === 'AbortError') {
+        setMessages(prev => prev.map(m =>
+          m.id === botId ? { ...m, streaming: false, text: "Request timed out. Please try again." } : m
+        ));
+      } else {
+        console.error('Groq streaming error:', err);
+        
+        // User-friendly error message
+        let errorMessage = err.message || "Something went wrong. Please try again.";
+        
+        setMessages(prev => prev.map(m =>
+          m.id === botId ? { ...m, streaming: false, text: `⚠️ ${errorMessage}` } : m
+        ));
+      }
     } finally {
       setIsLoading(false);
+      abortRef.current = null;
     }
   }, [messages, isLoading]);
 
-  const handleSubmit    = ()  => sendMessage(input);
-  const handleKeyDown   = (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSubmit(); } };
+  const handleSubmit = () => sendMessage(input);
+  const handleKeyDown = (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSubmit(); } };
   const handleSuggestion = (t) => sendMessage(t);
-  const handleStop      = ()  => { abortRef.current?.abort(); setIsLoading(false); };
+  const handleStop = () => { abortRef.current?.abort(); setIsLoading(false); };
+
+  // Message content with blinking cursor while streaming
+  const MessageContent = ({ text, isStreaming, isError }) => {
+    const parts = text.split(/(`[^`]+`|\*\*[^*]+\*\*)/g);
+    return (
+      <p className={`cb-msg-text ${isError ? 'cb-msg-error' : ''}`}>
+        {parts.map((part, i) => {
+          if (part.startsWith('`') && part.endsWith('`'))
+            return <code key={i} className="cb-inline-code">{part.slice(1, -1)}</code>;
+          if (part.startsWith('**') && part.endsWith('**'))
+            return <strong key={i}>{part.slice(2, -2)}</strong>;
+          return part.split('\n').map((line, j, arr) => (
+            <React.Fragment key={`${i}-${j}`}>
+              {line}
+              {j < arr.length - 1 && <br />}
+            </React.Fragment>
+          ));
+        })}
+        {isStreaming && <span className="cb-cursor" aria-hidden="true" />}
+      </p>
+    );
+  };
 
   return (
     <>
-      {/* Toggle */}
+      {/* Toggle Button */}
       <button
         className={`cb-toggle${isOpen ? ' cb-toggle--open' : ''}`}
         onClick={() => setIsOpen(v => !v)}
         aria-label={isOpen ? 'Close chat' : 'Chat with King Charlie'}
       >
-        <span className="cb-toggle-icon">{isOpen ? <FaTimes /> : <FaBrain />}</span>
+        <span className="cb-toggle-icon">{isOpen ? <FaTimes /> : <span><FaBrain /></span>}</span>
         {!isOpen && <span className="cb-toggle-dot" />}
       </button>
 
-      {/* Window */}
+      {/* Chat Window */}
       {isOpen && (
         <div className="cb-window" role="dialog" aria-label="Chat with King Charlie">
 
           {/* Header */}
           <div className="cb-header">
-            <div className="cb-header-avatar"><FaBrain /></div>
+            <div className="cb-header-avatar">
+              <img src={profilePhoto} alt="King Charlie" className="cb-header-img" />
+            </div>
             <div className="cb-header-info">
               <span className="cb-header-name">King Charlie</span>
               <span className="cb-header-status">
@@ -247,28 +380,41 @@ const ChatBot = () => {
             {messages.map(msg => (
               <div key={msg.id} className={`cb-msg cb-msg--${msg.role}`}>
                 {msg.role === 'assistant' && (
-                  <div className="cb-msg-avatar"><FaBrain /></div>
+                  <div className="cb-msg-avatar cb-avatar-img-container">
+                    <img src={profilePhoto} alt="King Charlie" className="cb-avatar-img" />
+                  </div>
                 )}
                 <div className="cb-msg-body">
                   <div className="cb-msg-bubble">
-                    {msg.text
-                      ? <MessageContent text={msg.text} />
-                      : <span className="cb-msg-empty">…</span>
-                    }
-                    {msg.streaming && <span className="cb-cursor" aria-hidden="true" />}
+                    {msg.text ? (
+                      <MessageContent 
+                        text={msg.text} 
+                        isStreaming={msg.streaming} 
+                        isError={msg.error}
+                      />
+                    ) : msg.streaming ? (
+                      <div className="cb-msg-bubble--typing">
+                        <span /><span /><span />
+                      </div>
+                    ) : (
+                      <span className="cb-msg-empty">…</span>
+                    )}
                   </div>
                   <span className="cb-msg-ts">{msg.ts}</span>
                 </div>
                 {msg.role === 'user' && (
-                  <div className="cb-msg-avatar cb-msg-avatar--user"><FaUser /></div>
+                  <div className="cb-msg-avatar cb-msg-avatar--user">
+                    <FaUser />
+                  </div>
                 )}
               </div>
             ))}
 
-            {/* Typing indicator */}
-            {isLoading && messages[messages.length - 1]?.role !== 'assistant' && (
+            {isLoading && !messages.some(m => m.streaming) && (
               <div className="cb-msg cb-msg--assistant">
-                <div className="cb-msg-avatar"><FaBrain /></div>
+                <div className="cb-msg-avatar cb-avatar-img-container">
+                  <img src={profilePhoto} alt="King Charlie" className="cb-avatar-img" />
+                </div>
                 <div className="cb-msg-body">
                   <div className="cb-msg-bubble cb-msg-bubble--typing">
                     <span /><span /><span />
@@ -283,15 +429,15 @@ const ChatBot = () => {
           {/* Suggestions */}
           {showSugg && messages.length <= 1 && (
             <div className="cb-suggestions">
-              {SUGGESTIONS.map(s => (
-                <button key={s} className="cb-chip" onClick={() => handleSuggestion(s)} disabled={isLoading}>
+              {SUGGESTIONS.map((s, idx) => (
+                <button key={idx} className="cb-chip" onClick={() => handleSuggestion(s)} disabled={isLoading}>
                   {s}
                 </button>
               ))}
             </div>
           )}
 
-          {/* Input */}
+          {/* Input Area */}
           <div className="cb-input-area">
             <textarea
               ref={inputRef}
@@ -330,30 +476,5 @@ const ChatBot = () => {
     </>
   );
 };
-
-/* ── Markdown renderer ───────────────────────────────────── */
-const MessageContent = ({ text }) => {
-  const parts = text.split(/(`[^`]+`|\*\*[^*]+\*\*)/g);
-  return (
-    <p className="cb-msg-text">
-      {parts.map((part, i) => {
-        if (part.startsWith('`') && part.endsWith('`'))
-          return <code key={i} className="cb-inline-code">{part.slice(1, -1)}</code>;
-        if (part.startsWith('**') && part.endsWith('**'))
-          return <strong key={i}>{part.slice(2, -2)}</strong>;
-        return part.split('\n').map((line, j, arr) => (
-          <React.Fragment key={`${i}-${j}`}>
-            {line}
-            {j < arr.length - 1 && <br />}
-          </React.Fragment>
-        ));
-      })}
-    </p>
-  );
-};
-
-/* ── Helpers ─────────────────────────────────────────────── */
-const uid = () => Math.random().toString(36).slice(2);
-const now = () => new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
 export default ChatBot;
