@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+﻿import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
   FaGithub, FaLinkedin, FaEnvelope, FaDownload,
@@ -274,7 +274,7 @@ const EXPERIENCES = [
     color: '#61DAFB',
     summary: 'After over a year in infrastructure, I transitioned to independent development — owning the full product lifecycle on every project I take.',
     achievements: [
-      'Shipped the Mabuhay Group Ticketing System — live in production, actively used',
+      'Shipped the HESK Ticketing System — live in production, actively used — AI-powered HESK platform.',
       'Built a full HRIS replacing manual payroll spreadsheets across the organisation',
       'Developed an Inventory Management System with real-time analytics',
       'Building Railway QA — AI-powered QA platform for quality assurance teams',
@@ -348,6 +348,36 @@ const EXPERIENCES = [
 /* ══════════════════════════════════════════════════════════
    HERO COMPONENT
 ══════════════════════════════════════════════════════════ */
+const W95_CODE_TEXT = `# kingcharlie.ps1
+Import-Module SelfTaught -Force
+
+$charlie = [Dev]::new("KingCharlie")
+$charlie.Location = "Tagum, PH"
+
+# self-taught since capstone panic 2022
+# somehow still shipping to production
+while ($true) {
+  Invoke-Coffee
+  Write-Host "No bugs. Probably."
+}
+
+# powered by: coffee & false confidence`;
+
+const W95_CODE_HTML = `<span class="w95-cc"># kingcharlie.ps1</span>
+<span class="w95-ck">Import-Module</span> <span class="w95-cv">SelfTaught</span> <span class="w95-cv">-Force</span>
+
+<span class="w95-cv2">$charlie</span> = [<span class="w95-cf">Dev</span>]::<span class="w95-cf">new</span>(<span class="w95-cs">"KingCharlie"</span>)
+<span class="w95-cv2">$charlie</span>.Location = <span class="w95-cs">"Tagum, PH"</span>
+
+<span class="w95-cc"># self-taught since capstone panic 2022</span>
+<span class="w95-cc"># somehow still shipping to production</span>
+<span class="w95-ck">while</span> (<span class="w95-cv">$true</span>) {
+  <span class="w95-cf">Invoke-Coffee</span>
+  <span class="w95-cf">Write-Host</span> <span class="w95-cs">"No bugs. Probably."</span>
+}
+
+<span class="w95-cc"># powered by: coffee &amp; false confidence</span>`;
+
 const Hero = () => {
   const location  = useLocation();
   const navigate  = useNavigate();
@@ -554,7 +584,7 @@ const Hero = () => {
     { icon: <FaArrowRight />, label: 'Experience',        hint: 'Career timeline',          action: () => { navigate('/experience'); setCmdOpen(false); } },
     { icon: <FaDownload />,   label: 'Download CV',       hint: 'PDF Resume',               action: () => { handleDownloadResume(); setCmdOpen(false); } },
     { icon: <FaEnvelope />,   label: 'Copy Email',        hint: 'dev.kcee37340@gmail.com',  action: () => { copyEmail(); setCmdOpen(false); } },
-    { icon: <FaGithub />,     label: 'GitHub',            hint: 'github.com/Meep0Zero',     action: () => { window.open('https://github.com/Meep0Zero', '_blank'); setCmdOpen(false); } },
+    { icon: <FaGithub />,     label: 'GitHub',            hint: 'https://github.com/systemdevcharles-rgb',     action: () => { window.open('https://github.com/systemdevcharles-rgb', '_blank'); setCmdOpen(false); } },
     { icon: <FaBrain />,      label: 'Chat with KC',      hint: 'AI assistant',             action: () => { window.dispatchEvent(new CustomEvent('openChat')); setCmdOpen(false); } },
     { icon: <FaExternalLinkAlt />, label: 'Live Project', hint: 'Ticketing System',         action: () => { window.open('https://tlhesk.mabuhaygroup.com/', '_blank'); setCmdOpen(false); } },
   ];
@@ -738,18 +768,50 @@ const Hero = () => {
                       ))}
                     </div>
                   </div>
+
+                  <div className="about-card-col">
+                    <div className="w95-card-container">
+                      <div className="w95-card">
+                        <div className="w95-card-header">
+                          <div className="w95-card-tabs">
+                            <div className="w95-card-tab active">kingcharlie.ps1</div>
+                          </div>
+                        </div>
+                        <div className="w95-card-body">
+                          <div className="w95-line-numbers">
+                            {Array.from({ length: 14 }, (_, i) => <span key={i}>{i + 1}</span>)}
+                          </div>
+                          <pre className="w95-code-content">
+                            <code dangerouslySetInnerHTML={{ __html: W95_CODE_HTML }} />
+                          </pre>
+                        </div>
+                        <div className="w95-card-footer">
+                          <span className="w95-lang">PowerShell</span>
+                          <button className="w95-copy-btn"
+                            onClick={() => navigator.clipboard.writeText(W95_CODE_TEXT).then(() => toast('success', 'Copied!')).catch(() => {})}>
+                            <svg viewBox="0 0 16 16" fill="none" width="12" height="12">
+                              <rect x="5" y="5" width="8" height="9" rx="1" stroke="currentColor" strokeWidth="1.5"/>
+                              <path d="M3 11V3a1 1 0 0 1 1-1h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                            </svg>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 {/* Tech Stack */}
                 <div className="stack-section">
                   <p className="stack-label">Tech Stack</p>
-                  <div className="stack-grid">
-                    {TECH_STACK.map(({ icon, label, color }) => (
-                      <div key={label} className="schip" style={{ '--chip': color }}>
-                        <span className="schip-ico">{icon}</span>
-                        <span className="schip-lbl">{label}</span>
-                      </div>
-                    ))}
+                  <div className="stack-carousel-wrap">
+                    <div className="stack-grid">
+                      {[...TECH_STACK, ...TECH_STACK].map(({ icon, label, color }, i) => (
+                        <div key={i} className="schip" style={{ '--chip': color }}>
+                          <span className="schip-ico">{icon}</span>
+                          <span className="schip-lbl">{label}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -767,6 +829,43 @@ const Hero = () => {
                   <h2 className="sec-title">Projects</h2>
                   <p className="sec-sub">Systems I designed, built, and shipped</p>
                 </div>
+              </div>
+            </div>
+
+            {/* Project list below carousel */}
+            <div className="page-container">
+              <div className="plist">
+                {PROJECTS.map((p, i) => (
+                  <div
+                    key={i}
+                    className="plist-item"
+                    onClick={() => p.gallery?.length > 0 && openGallery(p, 0)}
+                    role="button"
+                    tabIndex={0}
+                    onKeyDown={e => e.key === 'Enter' && p.gallery?.length > 0 && openGallery(p, 0)}
+                  >
+                    <div className="plist-icon" style={{ '--pc': p.iconColor }}>{p.icon}</div>
+                    <div className="plist-body">
+                      <div className="plist-row">
+                        <h3 className="plist-title">{p.title}</h3>
+                        <span className={`pbadge ${p.status === 'Live' ? 'pb-live' : p.status === 'Deployed' ? 'pb-done' : 'pb-wip'}`}>
+                          {p.status === 'Live' && <span className="pbadge-dot" />}{p.status}
+                        </span>
+                      </div>
+                      <p className="plist-sub">{p.subtitle}</p>
+                      <div className="plist-pills">
+                        {p.technologies.map((t, ti) => <span key={ti} className="ppill">{t}</span>)}
+                      </div>
+                    </div>
+                    <div className="plist-meta">
+                      <span className="plist-year">{p.year}</span>
+                      {p.gallery?.length > 0
+                        ? <span className="plist-shots"><FaImages /> {p.gallery.length}</span>
+                        : <span className="plist-shots soon">Soon</span>
+                      }
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -830,43 +929,6 @@ const Hero = () => {
                           </div>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Project list below carousel */}
-            <div className="page-container">
-              <div className="plist">
-                {PROJECTS.map((p, i) => (
-                  <div
-                    key={i}
-                    className="plist-item"
-                    onClick={() => p.gallery?.length > 0 && openGallery(p, 0)}
-                    role="button"
-                    tabIndex={0}
-                    onKeyDown={e => e.key === 'Enter' && p.gallery?.length > 0 && openGallery(p, 0)}
-                  >
-                    <div className="plist-icon" style={{ '--pc': p.iconColor }}>{p.icon}</div>
-                    <div className="plist-body">
-                      <div className="plist-row">
-                        <h3 className="plist-title">{p.title}</h3>
-                        <span className={`pbadge ${p.status === 'Live' ? 'pb-live' : p.status === 'Deployed' ? 'pb-done' : 'pb-wip'}`}>
-                          {p.status === 'Live' && <span className="pbadge-dot" />}{p.status}
-                        </span>
-                      </div>
-                      <p className="plist-sub">{p.subtitle}</p>
-                      <div className="plist-pills">
-                        {p.technologies.map((t, ti) => <span key={ti} className="ppill">{t}</span>)}
-                      </div>
-                    </div>
-                    <div className="plist-meta">
-                      <span className="plist-year">{p.year}</span>
-                      {p.gallery?.length > 0
-                        ? <span className="plist-shots"><FaImages /> {p.gallery.length}</span>
-                        : <span className="plist-shots soon">Soon</span>
-                      }
                     </div>
                   </div>
                 ))}
@@ -937,7 +999,7 @@ const Hero = () => {
               <p className="footer-desc">Full Stack Developer building production-grade web systems with Laravel and React. Based in Tagum City, Philippines.</p>
               <div className="footer-socials">
                 {[
-                  { ico: <FaGithub />,   label: 'GitHub',   href: 'https://github.com/Meep0Zero', target: '_blank' },
+                  { ico: <FaGithub />,   label: 'GitHub',   href: 'https://github.com/systemdevcharles-rgb', target: '_blank' },
                   { ico: <FaEnvelope />, label: 'Email',    onClick: e => { e.preventDefault(); copyEmail(); } },
                   { ico: <FaLinkedin />, label: 'LinkedIn', onClick: e => { e.preventDefault(); toast('info', 'LinkedIn coming soon'); } },
                 ].map(({ ico, label, href, target, onClick }) => (

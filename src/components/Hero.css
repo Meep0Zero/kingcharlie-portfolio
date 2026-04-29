@@ -346,7 +346,7 @@ body.has-cursor * { cursor: none !important; }
 }
 
 /* ══ ABOUT SPLIT ═════════════════════════════════════════════ */
-.about-split { display:grid; grid-template-columns:1fr 260px; gap:40px; align-items:start; }
+.about-split { display:grid; grid-template-columns:1fr 360px; gap:40px; align-items:start; }
 .about-content { display:flex; flex-direction:column; gap:24px; }
 .about-intro { max-width:560px; }
 .about-lead {
@@ -488,6 +488,59 @@ body.has-cursor * { cursor: none !important; }
 }
 .ace-copy-email:hover { color:var(--ink); border-color:var(--ink-22); background:var(--bg-hov); }
 
+/* ══ W95 CODE CARD ═══════════════════════════════════════════ */
+.w95-card-container {
+  width:100%; background:#c0c0c0;
+  border:2px outset #c0c0c0; padding:2px;
+  font-family:'MS Sans Serif','Tahoma',sans-serif; font-size:11px; color:#000;
+}
+.w95-card { display:flex; flex-direction:column; width:100%; background:#c0c0c0; border:2px inset #c0c0c0; overflow:hidden; }
+.w95-card-header { background:#000080; padding:0; flex-shrink:0; border-bottom:1px solid #000; }
+.w95-card-tabs { display:flex; background:#c0c0c0; border-bottom:1px solid #808080; height:20px; }
+.w95-card-tab { padding:2px 8px; font-size:11px; color:#000; background:#c0c0c0; border:2px outset #c0c0c0; border-bottom:none; height:18px; margin-top:1px; }
+.w95-card-tab.active { border:2px outset #c0c0c0; border-bottom:1px solid #c0c0c0; margin-top:0; height:19px; position:relative; z-index:2; }
+.w95-card-body {
+  display:flex; overflow:auto; height:220px;
+  padding:4px 0 4px 2px; background:#fff;
+  font-family:'Courier New',monospace; font-size:12px; line-height:1.4;
+  border:1px inset #808080; margin:2px;
+}
+.w95-line-numbers {
+  display:flex; flex-direction:column; padding:0 6px;
+  text-align:right; color:#808080; user-select:none;
+  font-size:12px; background:#f0f0f0; border-right:1px solid #c0c0c0; flex-shrink:0;
+}
+.w95-line-numbers span { line-height:1.4; display:block; }
+.w95-code-content {
+  margin:0; padding:0 4px; white-space:pre; overflow-x:auto;
+  color:#000; font-family:'Courier New',monospace; font-size:12px; line-height:1.4;
+}
+.w95-cc { color:#008000; }
+.w95-ck { color:#0000ff; font-weight:bold; }
+.w95-cv { color:#800080; }
+.w95-cv2 { color:#cc0000; }
+.w95-cf { color:#000; font-weight:bold; }
+.w95-cs { color:#808080; }
+.w95-cn { color:#000; }
+.w95-card-footer {
+  display:flex; justify-content:space-between; align-items:center;
+  background:#c0c0c0; padding:2px 4px;
+  border-top:1px solid #808080; flex-shrink:0; height:22px;
+}
+.w95-lang { color:#000; font-size:11px; }
+.w95-copy-btn {
+  display:flex; align-items:center; gap:4px;
+  background:#c0c0c0; color:#000; border:2px outset #c0c0c0;
+  padding:0 6px; cursor:pointer; font-size:11px; height:18px;
+  font-family:'MS Sans Serif','Tahoma',sans-serif;
+}
+.w95-copy-btn:active { border:2px inset #c0c0c0; padding:1px 5px 0 7px; }
+.w95-copy-btn svg { width:12px; height:12px; }
+.w95-card-body::-webkit-scrollbar { width:16px; height:16px; }
+.w95-card-body::-webkit-scrollbar-track { background:#c0c0c0; border:1px outset #c0c0c0; }
+.w95-card-body::-webkit-scrollbar-thumb { background:#c0c0c0; border:2px outset #c0c0c0; }
+.w95-card-body::-webkit-scrollbar-button { display:block; height:16px; background:#c0c0c0; border:2px outset #c0c0c0; }
+
 /* ══ TECH STACK ══════════════════════════════════════════════ */
 .stack-section { margin-top:32px; padding-top:24px; border-top:1px solid var(--bdr); }
 .stack-label {
@@ -495,7 +548,17 @@ body.has-cursor * { cursor: none !important; }
   letter-spacing:.16em; text-transform:uppercase;
   color:var(--ink-22); margin-bottom:12px; transition:color .3s;
 }
-.stack-grid { display:flex; flex-wrap:wrap; gap:6px; }
+.stack-carousel-wrap {
+  overflow:hidden;
+  mask-image:linear-gradient(to right,transparent 0,black 6%,black 94%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to right,transparent 0,black 6%,black 94%,transparent 100%);
+}
+.stack-grid { display:flex; width:max-content; gap:6px; padding:4px 0; animation:stackScroll 30s linear infinite; }
+.stack-grid:hover { animation-play-state:paused; }
+@keyframes stackScroll {
+  from { transform:translateX(0); }
+  to   { transform:translateX(-50%); }
+}
 .schip {
   display:inline-flex; align-items:center; gap:6px;
   padding:5px 10px; border-radius:2px;

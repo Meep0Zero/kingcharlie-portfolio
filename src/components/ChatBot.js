@@ -54,10 +54,10 @@ CAREER (most recent first):
    Customer service, communication skills, learning to understand user perspectives.
 
 TECHNICAL SKILLS:
-- Backend: PHP, Laravel, REST APIs
+- Backend: PHP, Laravel, REST APIs, C# (desktop apps)
 - Frontend: React, Inertia.js, JavaScript, HTML5, CSS3, Tailwind, Bootstrap
-- Database: MySQL (primary), Oracle (from infrastructure work), query optimisation
-- Mobile: Flutter (learning)
+- Database: MySQL (primary), SQLite (mobile apps), Oracle (from infrastructure work), query optimisation
+- Mobile: React Native (iOS + Android)
 - Infrastructure: Hardware repair, Windows OS, network config, POS systems
 - Tools: Git, Composer, NPM, VS Code, phpMyAdmin
 - Also built .ps1 and .bat scripts to automate system navigation and tasks during infrastructure work.
@@ -67,11 +67,13 @@ EDUCATION:
 - Computer Systems Servicing NCII — TESDA (post-graduation, hardware/software/networking)
 
 PROJECTS:
-1. Ticketing System (Live) — Laravel + React + Inertia.js + MySQL. Role-based access, real-time notifications, reporting dashboard. URL: https://tlhesk.mabuhaygroup.com/
-2. HRIS System (Deployed) — Laravel + MySQL + Blade + JS. Employee management, attendance, payroll computation.
-3. Inventory System (Deployed) — Laravel + MySQL + jQuery + DataTables. Stock tracking, analytics.
-4. E-commerce + POS Platform (In Development) — Laravel + React + Payment APIs. Unified online + physical retail.
-5. Flutter Mobile App (Coming Soon) — Firebase + REST API integration.
+1. Enterprise Ticketing System (Live) — Laravel + React + Inertia.js + MySQL. Role-based IT support platform for Mabuhay Group. Role-based workflows, real-time notifications, reporting. URL: https://tlhesk.mabuhaygroup.com/
+2. HRIS System (Deployed) — Laravel + MySQL + Blade + JS. End-to-end HR: employee records, attendance, payroll with tax deductions, leave management.
+3. Inventory Management System (Deployed) — Laravel + MySQL + jQuery + DataTables. Stock tracking, supplier records, reorder alerts, analytics dashboard.
+4. Railway QA (In Development) — Laravel + React + MySQL + AI integration. Internal QA management platform for quality assurance teams. Has an AI assistant that helps with defect analysis, test case suggestions, and automated report generation. Internal tool, not publicly accessible.
+5. Central Coffee (In Development) — C# desktop app + Laravel REST API backend + MySQL. Internet cafe management system. Replaces coin-slot time tracking — users create an account and buy credits. Every credit purchase earns Coffee Coins loyalty points (1,000 coins = 1 free hour). Credits persist between visits to drive repeat customers.
+6. SmartBudget (In Development) — React Native + SQLite, cross-platform iOS and Android. Personal finance tracker. Tracks income, debts, and savings. Shows upcoming payment due dates on a calendar and sends notifications before due dates. Simple, focused, no bloat.
+7. E-commerce + POS Platform (In Development) — Laravel + React + Payment APIs. Unified online storefront + physical POS on shared inventory. Real-time stock sync between online and in-store channels.
 
 PERSONALITY:
 - Practical and grounded — infrastructure taught me what "production" really means
