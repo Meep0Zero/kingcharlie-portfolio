@@ -9,7 +9,7 @@ import {
   FaTimes, FaChevronLeft, FaChevronRight, FaImages,
   FaArrowRight, FaFileAlt,
   FaSun, FaMoon, FaJs, FaExternalLinkAlt,
-  FaCheckCircle, FaBrain, FaBug, FaCoffee, FaWallet
+  FaCheckCircle, FaBrain, FaBug, FaCoffee, FaWallet, FaLock
 } from 'react-icons/fa';
 import { FaVuejs } from 'react-icons/fa';
 import { SiTailwindcss, SiInertia, SiSharp, SiSqlite } from 'react-icons/si';
@@ -19,10 +19,20 @@ import { VscCode } from 'react-icons/vsc';
 import './Hero.css';
 
 import profilePhoto     from '../assets/charles.jpg';
-import resumePDF        from '../assets/KingCharlie_Dacillo_Portfolio.pdf';
+import resumePDF        from '../assets/King_Charlie_Dacillo_Resume.pdf';
 import logo             from '../assets/kayecee.png';
 
-/* ── HESK (Ticketing System) images ──── */
+/* -- CLMIS - Capstone Project ---- */
+import clmisImage1 from '../assets/projects/clmis-1.png';
+import clmisImage2 from '../assets/projects/clmis-2.png';
+import clmisImage3 from '../assets/projects/clmis-2a.png';
+import clmisImage4 from '../assets/projects/clmis-2b.png';
+import clmisImage5 from '../assets/projects/clmis-2c.png';
+import clmisImage6 from '../assets/projects/clmis-3.png';
+import clmisImage7 from '../assets/projects/clmis-4.png';
+import clmisImage8 from '../assets/projects/clmis-5.png';
+
+/* -- HESK (Ticketing System) images ---- */
 import heskImage1 from '../assets/projects/hesk-1.png';
 import heskImage2 from '../assets/projects/hesk-2.png';
 import heskImage3 from '../assets/projects/hesk-3.png';
@@ -33,7 +43,15 @@ import heskImage7 from '../assets/projects/hesk-7.png';
 import heskImage8 from '../assets/projects/hesk-8.png';
 import heskImage9 from '../assets/projects/hesk-9.png';
 
-/* ── Railway QA images ──────────────── */
+/* -- CRRS - Commission ---- */
+import CRRSImg1 from '../assets/projects/crrs-1.png';
+import CRRSImg2 from '../assets/projects/crrs-2.png';
+import CRRSImg3 from '../assets/projects/crrs-3.png';
+import CRRSImg4 from '../assets/projects/crrs-4.png';
+import CRRSImg5 from '../assets/projects/crrs-5.png';
+import CRRSImg6 from '../assets/projects/crrs-6.png';
+
+/* -- Railway QA images ---------------- */
 import rqaImg1   from '../assets/projects/railwayqa-1.png';
 import rqaImg1a  from '../assets/projects/railwayqa-1a.png';
 import rqaImg1b  from '../assets/projects/railwayqa-1b.png';
@@ -55,7 +73,7 @@ import rqaImg9a  from '../assets/projects/railwayqa-9a.png';
 import rqaImg10  from '../assets/projects/railwayqa-10.png';
 import rqaImg10a from '../assets/projects/railwayqa-10a.png';
 
-/* ── Existing project images ─────────── */
+/* -- Existing project images ----------- */
 import hrisImage1       from '../assets/projects/hris-1.png';
 import hrisImage2       from '../assets/projects/hris-2.png';
 import hrisImage3       from '../assets/projects/hris-3.png';
@@ -75,9 +93,35 @@ import ecommerceImage10 from '../assets/projects/ecommerce-10.png';
 import ecommerceImage11 from '../assets/projects/ecommerce-11.png';
 import ecommerceImage12 from '../assets/projects/ecommerce-12.png';
 
-/* ══════════════════════════════════════════════════════════
+/* -- Coffee Central ----------- */
+import CCImage1 from '../assets/projects/cc-1.png';
+import CCImage2 from '../assets/projects/cc-admin.png';
+import CCImage3 from '../assets/projects/cc-AdminCustomer.png';
+import CCImage4 from '../assets/projects/cc-adminDashboard.png';
+import CCImage5 from '../assets/projects/cc-AdminNewCustomer.png';
+import CCImage6 from '../assets/projects/cc-profile.png';
+
+/* -- Smart Budgget ----------- */
+import SBImage1 from '../assets/projects/smartbudget-1.jpg';
+import SBImage2 from '../assets/projects/smartbudget-2.jpg';
+import SBImage3 from '../assets/projects/smartbudget-3.jpg';
+import SBImage4 from '../assets/projects/smartbudget-4.jpg';
+import SBImage5 from '../assets/projects/smartbudget-5.jpg';
+
+/* -- CAS ----------- */
+import CASimg1 from '../assets/projects/CAS-1.png';
+import CASimg2 from '../assets/projects/CAS-2.png';
+import CASimg3 from '../assets/projects/CAS-3.png';
+import CASimg4 from '../assets/projects/CAS-4.png';
+import CASimg6 from '../assets/projects/CAS-6.png';
+import CASimg7 from '../assets/projects/CAS-7.png';
+import CASimg8 from '../assets/projects/CAS-8.png';
+import CASimg9 from '../assets/projects/CAS-9.png';
+
+
+/* ----------------------------------------------------------
    TOAST
-══════════════════════════════════════════════════════════ */
+---------------------------------------------------------- */
 const TOAST_ICONS = {
   success: <svg viewBox="0 0 16 16" fill="none" width="13" height="13"><circle cx="8" cy="8" r="6.5" stroke="currentColor" strokeWidth="1.5"/><path d="M5 8l2 2 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>,
   error:   <svg viewBox="0 0 16 16" fill="none" width="13" height="13"><circle cx="8" cy="8" r="6.5" stroke="currentColor" strokeWidth="1.5"/><path d="M5.5 5.5l5 5M10.5 5.5l-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/></svg>,
@@ -95,9 +139,9 @@ const Toast = ({ message, type, onClose }) => {
   );
 };
 
-/* ══════════════════════════════════════════════════════════
+/* ----------------------------------------------------------
    DATA
-══════════════════════════════════════════════════════════ */
+---------------------------------------------------------- */
 const TECH_STACK = [
   { icon: <FaLaravel />,    label: 'Laravel',        color: '#FF2D20' },
   { icon: <FaPhp />,        label: 'PHP',            color: '#777BB4' },
@@ -120,8 +164,8 @@ const TECH_STACK = [
 const PROJECTS = [
   {
     title: 'Enterprise Ticketing System',
-    subtitle: 'IT Support Platform · Role-Based Workflow',
-    description: 'A full-featured IT support platform built for Mabuhay Group. Replaced chaotic email-based support with structured role-based workflows — support staff, approvers, and admins each see exactly what they need.',
+    subtitle: 'IT Support Platform - Role-Based Workflow',
+    description: 'A full-featured IT support platform built for Mabuhay Group. Replaced chaotic email-based support with structured role-based workflows - support staff, approvers, and admins each see exactly what they need.',
     impact: 'Ticket routing instant and auditable. Email back-and-forth eliminated entirely.',
     technologies: ['Laravel', 'Inertia.js', 'React', 'MySQL', 'Bootstrap'],
     icon: <FaTicketAlt />,
@@ -131,20 +175,20 @@ const PROJECTS = [
     year: '2025',
     gallery: [
       { id: 1,  url: heskImage1, caption: 'System overview' },
-      { id: 2,  url: heskImage2, caption: 'Login — role-aware authentication' },
-      { id: 3,  url: heskImage3, caption: 'Dashboard — ticket overview' },
-      { id: 4,  url: heskImage4, caption: 'Statistics — volume and trend analysis' },
+      { id: 2,  url: heskImage2, caption: 'Login - role-aware authentication' },
+      { id: 3,  url: heskImage3, caption: 'Dashboard - ticket overview' },
+      { id: 4,  url: heskImage4, caption: 'Statistics - volume and trend analysis' },
       { id: 5,  url: heskImage5, caption: 'Ticket creation form' },
-      { id: 6,  url: heskImage6, caption: 'CCTV Requisition — structured request' },
-      { id: 7,  url: heskImage7, caption: 'Approval interface — one-click flow' },
+      { id: 6,  url: heskImage6, caption: 'CCTV Requisition - structured request' },
+      { id: 7,  url: heskImage7, caption: 'Approval interface - one-click flow' },
       { id: 8,  url: heskImage8, caption: 'Report generator' },
       { id: 9,  url: heskImage9, caption: 'Admin control panel' },
     ],
   },
   {
-    title: 'HRIS — Human Resource System',
-    subtitle: 'Payroll · Attendance · Employee Lifecycle',
-    description: 'End-to-end HR management — onboarding records, daily time records, payroll with tax deductions, and leave management. Built so non-technical HR staff can operate it without a manual.',
+    title: 'HRIS - Human Resource System',
+    subtitle: 'Payroll - Attendance - Employee Lifecycle',
+    description: 'End-to-end HR management - onboarding records, daily time records, payroll with tax deductions, and leave management. Built so non-technical HR staff can operate it without a manual.',
     impact: 'Replaced manual payroll spreadsheets. Computation errors dropped to near-zero.',
     technologies: ['Laravel', 'MySQL', 'Blade', 'JavaScript', 'Bootstrap'],
     icon: <FaUsers />,
@@ -153,15 +197,15 @@ const PROJECTS = [
     status: 'Deployed',
     year: '2025',
     gallery: [
-      { id: 1, url: hrisImage1, caption: 'Employee directory — searchable records' },
+      { id: 1, url: hrisImage1, caption: 'Employee directory - searchable records' },
       { id: 2, url: hrisImage2, caption: 'Attendance tracker with daily time records' },
       { id: 3, url: hrisImage3, caption: 'Payroll with automatic tax deductions' },
     ],
   },
   {
     title: 'Inventory Management System',
-    subtitle: 'Stock Control · Multi-Category · Analytics',
-    description: 'Comprehensive inventory — product management, stock movement, supplier records, and reorder alerts. DataTables for fast client-side filtering and Chart.js analytics dashboard.',
+    subtitle: 'Stock Control - Multi-Category - Analytics',
+    description: 'Comprehensive inventory - product management, stock movement, supplier records, and reorder alerts. DataTables for fast client-side filtering and Chart.js analytics dashboard.',
     impact: 'Real-time stock visibility across the org. Manual counting reduced significantly.',
     technologies: ['Laravel', 'MySQL', 'jQuery', 'DataTables', 'Chart.js'],
     icon: <FaBox />,
@@ -170,14 +214,14 @@ const PROJECTS = [
     status: 'Deployed',
     year: '2024',
     gallery: [
-      { id: 1, url: inventoryImage1, caption: 'Dashboard — stock health and alerts' },
-      { id: 2, url: inventoryImage2, caption: 'Product catalog — category management' },
-      { id: 3, url: inventoryImage3, caption: 'Sales analytics — movement trends' },
+      { id: 1, url: inventoryImage1, caption: 'Dashboard - stock health and alerts' },
+      { id: 2, url: inventoryImage2, caption: 'Product catalog - category management' },
+      { id: 3, url: inventoryImage3, caption: 'Sales analytics - movement trends' },
     ],
   },
   {
     title: 'Railway QA',
-    subtitle: 'QA Platform · AI-Powered · Data Analytics',
+    subtitle: 'QA Platform - AI-Powered - Data Analytics',
     description: 'Internal QA management platform for the quality assurance team. Integrates an AI assistant for intelligent defect analysis, test case suggestions, and automated report generation.',
     impact: 'QA workflows accelerated with AI. Manual defect reporting replaced with intelligent analysis.',
     technologies: ['Laravel', 'React', 'AI Integration', 'MySQL', 'Data Analytics'],
@@ -210,8 +254,72 @@ const PROJECTS = [
     ],
   },
   {
+    title: 'CLMIS - Laboratory Inventory',
+    subtitle: 'Capstone Project - Team Lead - Lab Management',
+    description: 'Central Laboratory Management Inventory System for tracking supplies, equipment, and stock levels with user roles and audit history.',
+    impact: 'Replaced manual inventory logs with a structured system for accurate stock and request tracking.',
+    technologies: ['Laravel', 'MySQL', 'Blade', 'JavaScript'],
+    icon: <FaDatabase />,
+    iconColor: '#0EA5E9',
+    button: { label: 'Capstone Demo', url: null },
+    status: 'Completed',
+    year: '2023',
+    gallery: [
+      { id: 1, url: clmisImage1, caption: 'CLMIS dashboard overview' },
+      { id: 2, url: clmisImage2, caption: 'Laboratory stock request form' },
+      { id: 3, url: clmisImage3, caption: 'Inventory transaction log' },
+      { id: 4, url: clmisImage4, caption: 'Approval workflow interface' },
+      { id: 5, url: clmisImage5, caption: 'Item detail and history' },
+      { id: 6, url: clmisImage6, caption: 'Supplier management' },
+      { id: 7, url: clmisImage7, caption: 'Audit trail and reports' },
+      { id: 8, url: clmisImage8, caption: 'Stock adjustment screen' },
+    ],
+  },
+  {
+    title: 'CRRS - Commission Request',
+    subtitle: 'Commission System - Request Workflow - Approval',
+    description: 'Commission Request Routing System for handling requests, approvals, and status tracking across teams with audit-ready logs.',
+    impact: 'Streamlined approval cycles and reduced manual follow-ups across commission teams.',
+    technologies: ['Laravel', 'MySQL', 'React', 'Bootstrap'],
+    icon: <FaUsers />,
+    iconColor: '#8B5CF6',
+    button: { label: 'System Preview', url: null },
+    status: 'Completed',
+    year: '2024',
+    gallery: [
+      { id: 1, url: CRRSImg1, caption: 'CRRS submission dashboard' },
+      { id: 2, url: CRRSImg2, caption: 'Request details and approval steps' },
+      { id: 3, url: CRRSImg3, caption: 'Request history and tracking' },
+      { id: 4, url: CRRSImg4, caption: 'Admin review panel' },
+      { id: 5, url: CRRSImg5, caption: 'Commission summary and analytics' },
+      { id: 6, url: CRRSImg6, caption: 'Status updates and notifications' },
+    ],
+  },
+  {
+    title: 'CAS - Campus Access System',
+    subtitle: 'Attendance & Access - Mobile Verification - Reports',
+    description: 'Campus Access System managing student check-ins, visitor logging, and attendance reporting with QR verification and secure access control.',
+    impact: 'Improved campus security and attendance visibility with centralized reporting.',
+    technologies: ['Laravel', 'MySQL', 'JavaScript', 'Bootstrap'],
+    icon: <FaLock />,
+    iconColor: '#2563EB',
+    button: { label: 'Project Screenshots', url: null },
+    status: 'Completed',
+    year: '2024',
+    gallery: [
+      { id: 1, url: CASimg1, caption: 'CAS login and dashboard' },
+      { id: 2, url: CASimg2, caption: 'Student attendance view' },
+      { id: 3, url: CASimg3, caption: 'Visitor logging interface' },
+      { id: 4, url: CASimg4, caption: 'Access control panel' },
+      { id: 6, url: CASimg6, caption: 'Student profile details' },
+      { id: 7, url: CASimg7, caption: 'QR check-in flow' },
+      { id: 8, url: CASimg8, caption: 'Admin settings and configuration' },
+      { id: 9, url: CASimg9, caption: 'Analytics and export tools' },
+    ],
+  },
+  {
     title: 'Central Coffee',
-    subtitle: 'Desktop App · Internet Cafe Management · Credit System',
+    subtitle: 'Desktop App — Internet Cafe Management — Credit System',
     description: 'Modern internet cafe management replacing coin-slot time tracking. Users create an account at the counter and purchase credits. Every credit purchase earns Coffee Coins — 1,000 coins = 1 hour of time. Credits persist between visits.',
     impact: 'Customers return whenever credits remain. Loyalty coins drive repeat visits without needing cash on hand.',
     technologies: ['C#', 'Laravel', 'MySQL', 'REST API'],
@@ -220,11 +328,18 @@ const PROJECTS = [
     button: { label: 'Coming Soon', url: null },
     status: 'In Development',
     year: '2025',
-    gallery: [],
+    gallery: [
+      { id: 1, url: CCImage1, caption: 'Central Coffee main screen' },
+      { id: 2, url: CCImage2, caption: 'Admin dashboard overview' },
+      { id: 3, url: CCImage3, caption: 'Customer account management' },
+      { id: 4, url: CCImage4, caption: 'Admin dashboard insights' },
+      { id: 5, url: CCImage5, caption: 'New customer creation' },
+      { id: 6, url: CCImage6, caption: 'User profile and settings' },
+    ],
   },
   {
     title: 'SmartBudget',
-    subtitle: 'Mobile App · Finance Tracker · Debt & Savings',
+    subtitle: 'Mobile App — Finance Tracker — Debt & Savings',
     description: 'Personal finance app tracking income, debts, and savings in one place. Automatically marks upcoming payment dates on a built-in calendar and sends notifications when due dates approach — so you always know where your money goes.',
     impact: 'Financial clarity at a glance. No more missed payments, no more guessing your balance.',
     technologies: ['React Native', 'SQLite', 'iOS', 'Android'],
@@ -233,11 +348,17 @@ const PROJECTS = [
     button: { label: 'Coming Soon', url: null },
     status: 'In Development',
     year: '2025',
-    gallery: [],
+    gallery: [
+      { id: 1, url: SBImage1, caption: 'SmartBudget dashboard' },
+      { id: 2, url: SBImage2, caption: 'Expense and income entry' },
+      { id: 3, url: SBImage3, caption: 'Budget categories overview' },
+      { id: 4, url: SBImage4, caption: 'Calendar payment reminders' },
+      { id: 5, url: SBImage5, caption: 'Savings progress view' },
+    ],
   },
   {
     title: 'E-commerce + Point of Sale',
-    subtitle: 'Unified Retail · Online + Physical · Payment Processing',
+    subtitle: 'Unified Retail — Online + Physical — Payment Processing',
     description: 'Unifying an online storefront with a physical POS terminal. Customers shop online while staff process walk-in sales on the same shared inventory — real-time stock sync across both channels.',
     impact: 'One inventory, one source of truth — fragmentation between online and physical retail solved.',
     technologies: ['Laravel', 'React', 'Inertia.js', 'MySQL', 'Payment APIs'],
@@ -267,8 +388,8 @@ const EXPERIENCES = [
   {
     id: 1,
     company: 'Full Stack Developer',
-    role: 'Self-Directed · Independent',
-    period: 'Sep 2025 — Present',
+    role: 'Self-Directed - Independent',
+    period: 'Sep 2025 - Present',
     location: 'Tagum City, Philippines',
     type: 'Current',
     color: '#61DAFB',
@@ -319,7 +440,7 @@ const EXPERIENCES = [
   {
     id: 4,
     company: 'Capstone Leader - CLMIS (Central Laboratory Management Inventory System)',
-    role: '4th Year College · Team Lead',
+    role: '4th Year College — Team Lead',
     period: 'Oct 2022 — Jan 2023',
     location: 'Southern Christian College, Midsayap Cotabato, Philippines',
     type: 'Completed',
@@ -345,38 +466,28 @@ const EXPERIENCES = [
   },
 ];
 
-/* ══════════════════════════════════════════════════════════
+/* ----------------------------------------------------------
    HERO COMPONENT
-══════════════════════════════════════════════════════════ */
-const W95_CODE_TEXT = `# kingcharlie.ps1
-Import-Module SelfTaught -Force
+---------------------------------------------------------- */
+const W95_CODE_TEXT = `C:\\Meep\\> git status
+On branch main
+nothing to commit, working tree clean.
 
-$charlie = [Dev]::new("KingCharlie")
-$charlie.Location = "Tagum, PH"
+C:\\Meep\\> npm run build
+'npm' is not recognized as an internal or external command,
+operable program or batch file.
 
-# self-taught since capstone panic 2022
-# somehow still shipping to production
-while ($true) {
-  Invoke-Coffee
-  Write-Host "No bugs. Probably."
-}
+C:\\Meep\\>`;
 
-# powered by: coffee & false confidence`;
+const W95_CODE_HTML = `<span class="w95-prompt">C:\\Meep\\King Charllie&gt; </span><span class="w95-command">git status</span>
+<span class="w95-cc">On branch main</span>
+<span class="w95-cc">nothing to commit, working tree clean.</span>
 
-const W95_CODE_HTML = `<span class="w95-cc"># kingcharlie.ps1</span>
-<span class="w95-ck">Import-Module</span> <span class="w95-cv">SelfTaught</span> <span class="w95-cv">-Force</span>
+<span class="w95-prompt">C:\\Meep\\&gt; </span><span class="w95-command">npm run build</span>
+<span class="w95-cs">'npm' is not recognized as an internal or external command,</span>
+<span class="w95-cs">operable program or batch file.</span>
 
-<span class="w95-cv2">$charlie</span> = [<span class="w95-cf">Dev</span>]::<span class="w95-cf">new</span>(<span class="w95-cs">"KingCharlie"</span>)
-<span class="w95-cv2">$charlie</span>.Location = <span class="w95-cs">"Tagum, PH"</span>
-
-<span class="w95-cc"># self-taught since capstone panic 2022</span>
-<span class="w95-cc"># somehow still shipping to production</span>
-<span class="w95-ck">while</span> (<span class="w95-cv">$true</span>) {
-  <span class="w95-cf">Invoke-Coffee</span>
-  <span class="w95-cf">Write-Host</span> <span class="w95-cs">"No bugs. Probably."</span>
-}
-
-<span class="w95-cc"># powered by: coffee &amp; false confidence</span>`;
+<span class="w95-prompt">C:\\Meep\\&gt; </span>`;
 
 const Hero = () => {
   const location  = useLocation();
@@ -394,23 +505,18 @@ const Hero = () => {
   const [cmdQuery, setCmdQuery] = useState('');
   const [cmdIdx,   setCmdIdx]   = useState(0);
 
-  const cursorDotRef  = useRef(null);
-  const cursorRingRef = useRef(null);
-  const mouseRef      = useRef({ x: -100, y: -100 });
-  const ringPosRef    = useRef({ x: -100, y: -100 });
-
   const vcardCardRef     = useRef(null);
   const vcardCordPathRef = useRef(null);
   const vcardPhysics     = useRef({ x: 0, vel: 0, dragging: false, startX: 0, startCardX: 0 });
   const vcardRafRef      = useRef(null);
 
-  /* ── theme ── */
+  /* -- theme -- */
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
     localStorage.setItem('theme', darkMode ? 'dark' : 'light');
   }, [darkMode]);
 
-  /* ── scroll progress ── */
+  /* -- scroll progress -- */
   useEffect(() => {
     let ticking = false;
     const onScroll = () => {
@@ -423,7 +529,7 @@ const Hero = () => {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  /* ── scroll-reveal ── */
+  /* -- scroll-reveal -- */
   useEffect(() => {
     const io = new IntersectionObserver(
       entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('visible')),
@@ -433,48 +539,7 @@ const Hero = () => {
     return () => io.disconnect();
   }, [location.pathname]);
 
-  /* ── custom cursor ── */
-  useEffect(() => {
-    const dot  = cursorDotRef.current;
-    const ring = cursorRingRef.current;
-    if (!dot || !ring) return;
-    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) return;
-    document.body.classList.add('has-cursor');
-    const onMove = (e) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY };
-      dot.style.transform = `translate(${e.clientX - 3}px, ${e.clientY - 3}px)`;
-    };
-    let rafId;
-    const tick = () => {
-      const { x: mx, y: my } = mouseRef.current;
-      const { x: rx, y: ry } = ringPosRef.current;
-      const ease = 0.13;
-      ringPosRef.current = { x: rx + (mx - rx) * ease, y: ry + (my - ry) * ease };
-      ring.style.transform = `translate(${ringPosRef.current.x}px, ${ringPosRef.current.y}px)`;
-      rafId = requestAnimationFrame(tick);
-    };
-    const onIn  = () => ring.classList.add('cursor-ring--hover');
-    const onOut = () => ring.classList.remove('cursor-ring--hover');
-    document.addEventListener('mousemove', onMove);
-    rafId = requestAnimationFrame(tick);
-    const addListeners = () => {
-      document.querySelectorAll('a,button,[role="button"],.pcard').forEach(el => {
-        el.addEventListener('mouseenter', onIn);
-        el.addEventListener('mouseleave', onOut);
-      });
-    };
-    addListeners();
-    const mo = new MutationObserver(addListeners);
-    mo.observe(document.body, { childList: true, subtree: true });
-    return () => {
-      document.body.classList.remove('has-cursor');
-      document.removeEventListener('mousemove', onMove);
-      cancelAnimationFrame(rafId);
-      mo.disconnect();
-    };
-  }, []);
-
-  /* ── command palette keyboard ── */
+  /* -- command palette keyboard -- */
   useEffect(() => {
     const onKey = (e) => {
       if ((e.metaKey || e.ctrlKey) && e.key === 'k') { e.preventDefault(); setCmdOpen(v => !v); setCmdQuery(''); setCmdIdx(0); }
@@ -484,7 +549,7 @@ const Hero = () => {
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
-  /* ── gallery keyboard ── */
+  /* -- gallery keyboard -- */
   useEffect(() => {
     if (!gallery.open) return;
     const h = e => {
@@ -496,12 +561,12 @@ const Hero = () => {
     return () => window.removeEventListener('keydown', h);
   }, [gallery.open]);
 
-  /* ── lanyard RAF cleanup ── */
+  /* -- lanyard RAF cleanup -- */
   useEffect(() => () => cancelAnimationFrame(vcardRafRef.current), []);
 
   const scrollPercent = Math.min(100, (scrollY / (document.documentElement.scrollHeight - window.innerHeight || 1)) * 100);
 
-  /* ── callbacks ── */
+  /* -- callbacks -- */
   const toast      = useCallback((type, message) => {
     const id = Date.now();
     setToasts(p => [...p, { id, type, message }]);
@@ -577,7 +642,7 @@ const Hero = () => {
   const galleryNext  = () => setGallery(g => ({ ...g, index: (g.index + 1) % g.project.gallery.length }));
   const galleryPrev  = () => setGallery(g => ({ ...g, index: (g.index - 1 + g.project.gallery.length) % g.project.gallery.length }));
 
-  /* ── command items ── */
+  /* -- command items -- */
   const CMD_ITEMS = [
     { icon: <FaArrowRight />, label: 'Home',              hint: 'Landing page',             action: () => { navigate('/'); setCmdOpen(false); } },
     { icon: <FaArrowRight />, label: 'Projects',          hint: '7 systems built',          action: () => { navigate('/projects'); setCmdOpen(false); } },
@@ -596,10 +661,6 @@ const Hero = () => {
 
   return (
     <>
-      {/* Custom Cursor */}
-      <div className="cursor-dot"  ref={cursorDotRef}  aria-hidden="true" />
-      <div className="cursor-ring" ref={cursorRingRef} aria-hidden="true" />
-
       {/* Command Palette */}
       {cmdOpen && (
         <div className="cmd-overlay" onClick={() => setCmdOpen(false)}>
@@ -611,7 +672,7 @@ const Hero = () => {
               </svg>
               <input
                 className="cmd-input"
-                placeholder="Search commands…"
+                placeholder="Search commands..."
                 value={cmdQuery}
                 onChange={e => { setCmdQuery(e.target.value); setCmdIdx(0); }}
                 onKeyDown={e => {
@@ -637,8 +698,8 @@ const Hero = () => {
               }
             </div>
             <div className="cmd-footer">
-              <span className="cmd-hint"><kbd className="cmd-key">↑↓</kbd>navigate</span>
-              <span className="cmd-hint"><kbd className="cmd-key">↵</kbd>select</span>
+              <span className="cmd-hint"><kbd className="cmd-key">??</kbd>navigate</span>
+              <span className="cmd-hint"><kbd className="cmd-key">?</kbd>select</span>
               <span className="cmd-hint"><kbd className="cmd-key">esc</kbd>close</span>
             </div>
           </div>
@@ -671,7 +732,7 @@ const Hero = () => {
               Available
             </span>
             <button className="nav-cmd-trigger" onClick={() => { setCmdOpen(true); setCmdQuery(''); setCmdIdx(0); }} title="Ctrl+K">
-              <span>⌘ K</span>
+              <span>? K</span>
             </button>
             <button className="theme-btn" onClick={() => setDarkMode(d => !d)} aria-label="Toggle theme">
               <span className="theme-track">
@@ -687,10 +748,10 @@ const Hero = () => {
         {toasts.map(t => <Toast key={t.id} type={t.type} message={t.message} onClose={() => removeToast(t.id)} />)}
       </div>
 
-      {/* ══ ROUTE CONTENT ══ */}
+      {/* -- ROUTE CONTENT -- */}
       <div className="site-root">
 
-        {/* ── HOME ── */}
+        {/* -- HOME -- */}
         {(path === '/' || path === '') && (
           <>
             {/* Hero header */}
@@ -699,7 +760,7 @@ const Hero = () => {
                 <div className="hero-left">
                   <div className="hero-eyebrow reveal">
                     <span className="eyebrow-dot" />
-                    Full Stack Developer · Davao City, Philippines
+                    Full Stack Developer — Davao City, Philippines
                   </div>
                   <h1 className="hero-name reveal delay-1">
                     King Charlie<br /><em>R. Dacillo</em>
@@ -745,27 +806,8 @@ const Hero = () => {
                       <p className="about-lead">I didn't start in a classroom. I started in a server room.</p>
                       <p className="about-p">Managing IT infrastructure for 120+ branches across the Philippines wired me differently. While most developers optimize for happy paths, I think about failure modes and production behaviour first. I've seen what happens when a POS database locks during peak hours — that operational instinct lives in every system I build.</p>
                       <p className="about-p">My stack is deliberate: <strong>Laravel</strong> for expressive backends. <strong>React + Inertia.js</strong> for reactive UIs without decoupled overhead. <strong>MySQL</strong> with careful schema design — because a poorly modelled table becomes a performance crisis at scale.</p>
-                      <p className="about-p">Recently, I’ve been exploring artificial intelligence more deeply, with a strong focus on incorporating AI tools and techniques into modern applications. My current work involves building AI-driven solutions, developing intelligent systems, and utilizing generative AI to streamline development processes and deliver innovative, state-of-the-art technology.</p>
+                      <p className="about-p">Recently, I've been exploring artificial intelligence more deeply, with a strong focus on incorporating AI tools and techniques into modern applications. My current work involves building AI-driven solutions, developing intelligent systems, and utilizing generative AI to streamline development processes and deliver innovative, state-of-the-art technology.</p>
                       <p className="about-p about-closer">I build things that work. And I stay until they do.</p>
-                    </div>
-
-                    <div className="expertise-grid">
-                      {[
-                        { icon: <FaCode />,     title: 'Backend',        color: '#FF2D20', tags: ['Laravel', 'PHP', 'REST APIs', 'Auth & RBAC'] },
-                        { icon: <FaReact />,    title: 'Frontend',       color: '#61DAFB', tags: ['React', 'Inertia.js', 'Vue.js', 'Tailwind CSS'] },
-                        { icon: <FaDatabase />, title: 'Database',       color: '#00758F', tags: ['MySQL', 'Schema Design', 'Query Optimisation'] },
-                        { icon: <FaServer />,   title: 'Infrastructure', color: '#539E43', tags: ['MERAKI SD-WAN', 'Windows Server', 'Active Directory'] },
-                      ].map(({ icon, title, color, tags }) => (
-                        <div key={title} className="ecard" style={{ '--accent': color }}>
-                          <div className="ecard-head">
-                            <span className="ecard-ico">{icon}</span>
-                            <h3 className="ecard-title">{title}</h3>
-                          </div>
-                          <div className="ecard-tags">
-                            {tags.map(t => <span key={t} className="etag">{t}</span>)}
-                          </div>
-                        </div>
-                      ))}
                     </div>
                   </div>
 
@@ -774,7 +816,7 @@ const Hero = () => {
                       <div className="w95-card">
                         <div className="w95-card-header">
                           <div className="w95-card-tabs">
-                            <div className="w95-card-tab active">kingcharlie.ps1</div>
+                            <div className="w95-card-tab active">Command Prompt</div>
                           </div>
                         </div>
                         <div className="w95-card-body">
@@ -786,7 +828,7 @@ const Hero = () => {
                           </pre>
                         </div>
                         <div className="w95-card-footer">
-                          <span className="w95-lang">PowerShell</span>
+                          <span className="w95-lang">cmd.exe</span>
                           <button className="w95-copy-btn"
                             onClick={() => navigator.clipboard.writeText(W95_CODE_TEXT).then(() => toast('success', 'Copied!')).catch(() => {})}>
                             <svg viewBox="0 0 16 16" fill="none" width="12" height="12">
@@ -819,7 +861,7 @@ const Hero = () => {
           </>
         )}
 
-        {/* ── PROJECTS ── */}
+        {/* -- PROJECTS -- */}
         {path === '/projects' && (
           <section className="section route-section reveal">
             <div className="page-container">
@@ -832,7 +874,7 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Project list below carousel */}
+            {/* Compact 2-column project list */}
             <div className="page-container">
               <div className="plist">
                 {PROJECTS.map((p, i) => (
@@ -853,9 +895,6 @@ const Hero = () => {
                         </span>
                       </div>
                       <p className="plist-sub">{p.subtitle}</p>
-                      <div className="plist-pills">
-                        {p.technologies.map((t, ti) => <span key={ti} className="ppill">{t}</span>)}
-                      </div>
                     </div>
                     <div className="plist-meta">
                       <span className="plist-year">{p.year}</span>
@@ -869,75 +908,77 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Infinite Carousel */}
-            <div className="carousel-wrap">
-              <div
-                className="carousel-track"
-                style={{ '--track-half': `${PROJECTS.length * 296}px` }}
-              >
-                {[...PROJECTS, ...PROJECTS].map((p, i) => (
-                  <div
-                    key={i}
-                    className="pcard-slot"
-                    onClick={() => p.gallery?.length > 0 && openGallery(p, 0)}
-                  >
+            {/* Carousel — bounded by page-container so it's centered like Home */}
+            <div className="page-container">
+              <div className="carousel-wrap">
+                <div
+                  className="carousel-track"
+                  style={{ '--track-half': `${PROJECTS.length * 296}px` }}
+                >
+                  {[...PROJECTS, ...PROJECTS].map((p, i) => (
                     <div
-                      className="pcard"
-                      style={{
-                        '--pc': p.iconColor,
-                        ...(p.gallery?.length > 0 && { backgroundImage: `url(${p.gallery[0].url})` }),
-                      }}
-                      role="button"
-                      tabIndex={i < PROJECTS.length ? 0 : -1}
-                      onKeyDown={e => e.key === 'Enter' && p.gallery?.length > 0 && openGallery(p, 0)}
+                      key={i}
+                      className="pcard-slot"
+                      onClick={() => p.gallery?.length > 0 && openGallery(p, 0)}
                     >
-                      <div className="pcard-overlay" />
-                      {!p.gallery?.length && (
-                        <div className="pcard-no-img">
-                          <span className="pcard-big-icon" style={{ color: p.iconColor }}>{p.icon}</span>
-                        </div>
-                      )}
-                      <div className="pcard-content">
-                        <div className="pcard-top">
-                          <span className={`pbadge ${p.status === 'Live' ? 'pb-live' : p.status === 'Deployed' ? 'pb-done' : 'pb-wip'}`}>
-                            {p.status === 'Live' && <span className="pbadge-dot" />}
-                            {p.status}
-                          </span>
-                          <span className="pcard-year">{p.year}</span>
-                        </div>
-                        <div className="pcard-bottom">
-                          <h3 className="pcard-title">{p.title}</h3>
-                          <p className="pcard-sub">{p.subtitle}</p>
-                          <div className="pcard-reveal">
-                            <p className="pcard-impact">{p.impact}</p>
-                            <div className="pcard-pills">
-                              {p.technologies.slice(0, 4).map((t, ti) => (
-                                <span key={ti} className="ppill-card">{t}</span>
-                              ))}
-                            </div>
-                            <div className="pcard-actions">
-                              <span className="pcard-view-btn">
-                                <FaImages /> {p.gallery?.length > 0 ? `${p.gallery.length} Screenshots` : 'Coming Soon'}
-                              </span>
-                              {p.button?.url && (
-                                <a href={p.button.url} target="_blank" rel="noopener noreferrer"
-                                  className="pcard-live-btn" onClick={e => e.stopPropagation()}>
-                                  <FaExternalLinkAlt /> Live
-                                </a>
-                              )}
+                      <div
+                        className="pcard"
+                        style={{
+                          '--pc': p.iconColor,
+                          ...(p.gallery?.length > 0 && { backgroundImage: `url(${p.gallery[0].url})` }),
+                        }}
+                        role="button"
+                        tabIndex={i < PROJECTS.length ? 0 : -1}
+                        onKeyDown={e => e.key === 'Enter' && p.gallery?.length > 0 && openGallery(p, 0)}
+                      >
+                        <div className="pcard-overlay" />
+                        {!p.gallery?.length && (
+                          <div className="pcard-no-img">
+                            <span className="pcard-big-icon" style={{ color: p.iconColor }}>{p.icon}</span>
+                          </div>
+                        )}
+                        <div className="pcard-content">
+                          <div className="pcard-top">
+                            <span className={`pbadge ${p.status === 'Live' ? 'pb-live' : p.status === 'Deployed' ? 'pb-done' : 'pb-wip'}`}>
+                              {p.status === 'Live' && <span className="pbadge-dot" />}
+                              {p.status}
+                            </span>
+                            <span className="pcard-year">{p.year}</span>
+                          </div>
+                          <div className="pcard-bottom">
+                            <h3 className="pcard-title">{p.title}</h3>
+                            <p className="pcard-sub">{p.subtitle}</p>
+                            <div className="pcard-reveal">
+                              <p className="pcard-impact">{p.impact}</p>
+                              <div className="pcard-pills">
+                                {p.technologies.slice(0, 4).map((t, ti) => (
+                                  <span key={ti} className="ppill-card">{t}</span>
+                                ))}
+                              </div>
+                              <div className="pcard-actions">
+                                <span className="pcard-view-btn">
+                                  <FaImages /> {p.gallery?.length > 0 ? `${p.gallery.length} Screenshots` : 'Coming Soon'}
+                                </span>
+                                {p.button?.url && (
+                                  <a href={p.button.url} target="_blank" rel="noopener noreferrer"
+                                    className="pcard-live-btn" onClick={e => e.stopPropagation()}>
+                                    <FaExternalLinkAlt /> Live
+                                  </a>
+                                )}
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </section>
         )}
 
-        {/* ── EXPERIENCE ── */}
+        {/* -- EXPERIENCE -- */}
         {path === '/experience' && (
           <section className="section route-section reveal">
             <div className="page-container">
@@ -1032,7 +1073,7 @@ const Hero = () => {
           <div className="footer-bottom">
             <p className="footer-copy">&copy; {new Date().getFullYear()} King Charlie R. Dacillo</p>
             <button className="footer-cmd-btn" onClick={() => { setCmdOpen(true); setCmdQuery(''); setCmdIdx(0); }}>
-              <span>⌘K</span> Quick Nav
+              <span>?K</span> Quick Nav
             </button>
           </div>
         </div>
@@ -1074,3 +1115,4 @@ const Hero = () => {
 };
 
 export default Hero;
+
