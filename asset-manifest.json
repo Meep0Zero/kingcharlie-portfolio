@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/kingcharliedacillo.dev/static/css/main.95aef9d2.css",
-    "main.js": "/kingcharliedacillo.dev/static/js/main.b24702a3.js",
+    "main.js": "/kingcharliedacillo.dev/static/js/main.5dad7789.js",
     "static/js/453.8d5539f6.chunk.js": "/kingcharliedacillo.dev/static/js/453.8d5539f6.chunk.js",
     "static/media/kayecee.png": "/kingcharliedacillo.dev/static/media/kayecee.dbb1f478a52784bae8fb.png",
     "static/media/ecommerce-1.png": "/kingcharliedacillo.dev/static/media/ecommerce-1.2d982cd8e195c54acdaa.png",
@@ -88,11 +88,11 @@
     "static/media/King_Charlie_Dacillo_Resume.pdf": "/kingcharliedacillo.dev/static/media/King_Charlie_Dacillo_Resume.37bce90fd2e66bab41ee.pdf",
     "index.html": "/kingcharliedacillo.dev/index.html",
     "main.95aef9d2.css.map": "/kingcharliedacillo.dev/static/css/main.95aef9d2.css.map",
-    "main.b24702a3.js.map": "/kingcharliedacillo.dev/static/js/main.b24702a3.js.map",
+    "main.5dad7789.js.map": "/kingcharliedacillo.dev/static/js/main.5dad7789.js.map",
     "453.8d5539f6.chunk.js.map": "/kingcharliedacillo.dev/static/js/453.8d5539f6.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.95aef9d2.css",
-    "static/js/main.b24702a3.js"
+    "static/js/main.5dad7789.js"
   ]
 }
